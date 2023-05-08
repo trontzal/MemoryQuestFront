@@ -4,7 +4,6 @@
     <div class="juego">
       <div class="cuadriculas" :style="{ 'grid-template-columns': `repeat(${tamano}, 1fr)` }">
         <div v-for="(cuadricula, index) in cuadriculas" :key="index" :class="cuadricula.class" @click="seleccionarCuadricula(cuadricula)">
-
         </div>
       </div>
     </div>
@@ -16,14 +15,18 @@
 export default {
   name: 'MemoriaVisual',
   data() {
+    //return para los datos que vamos a manejaren el componente
     return {
       // tamaño inicial de 3 osea 3x3 en la cuadricula
       tamano: 3,
       cuadriculas: [],
+      cuadriculasIluminadas:[],
+      vidas : 3,
     }
   },
   created() {
-    //crear las cudriculas dinamicas, cogemos el tamaño y lo multiplicamos por si mismo
+    // created se usa para crear la cuadricula antes de que el componente se rendereice
+    //crear las cuadriculas dinamicas, cogemos el tamaño y lo multiplicamos por si mismo
     for(let i= 0;i < this.tamano * this.tamano; i ++){
       // damos a cada cuadricula su index en la clase para diferenciarlas
       this.cuadriculas.push({class:`cuadricula${i}`})
@@ -36,16 +39,16 @@ export default {
       this.iluminarCuadriculasAleatorias()
     },
     iluminarCuadriculasAleatorias() {
-      const cuadriculasIluminadas = []
-      while(cuadriculasIluminadas.length < 3) {
+      this.cuadriculasIluminadas = []
+      while(this.cuadriculasIluminadas.length < 3) {
         const indice = Math.floor(Math.random() * this.cuadriculas.length)
-        if (!cuadriculasIluminadas.includes(indice)) {
-          cuadriculasIluminadas.push(indice)
+        if (!this.cuadriculasIluminadas.includes(indice)) {
+          this.cuadriculasIluminadas.push(indice)
         }
       }
       //Agregamos la clase "cuadricula-iluminada" a las cuadrículas seleccionadas
-      cuadriculasIluminadas.forEach((indice) =>{
-      this.cuadriculas [indice].class = 'cuadricula cuadricula-iluminada'
+      this.cuadriculasIluminadas.forEach((indice) =>{
+      this.cuadriculas[indice].class = 'cuadricula cuadricula-iluminada'
       //Despues de un segundo quitamos la clase cuadricula iluminada
       setTimeout(() => {
           this.cuadriculas[indice].class = 'cuadricula'
@@ -53,7 +56,15 @@ export default {
       })
     },
     seleccionarCuadricula(cuadricula){
-      alert(cuadricula.class)
+      if(this.cuadriculasIluminadas.includes(this.cuadriculas.indexOf(cuadricula))){
+        cuadricula.class = 'cuadricula bien'
+      }else if(!this.cuadriculasIluminadas.includes(this.cuadriculas.indexOf(cuadricula))){
+        cuadricula.class = 'cuadricula mal'
+        this.vidas = this.vidas-1
+      }else{
+        alert("error")
+      }
+      alert(this.vidas)
     }
   },
 }
@@ -89,5 +100,12 @@ export default {
     background-color: black;
   }
 
+  .bien{
+    background-color: green;
+  }
+  
+  .mal{
+    background-color: red;
+  }
 </style>
 
