@@ -1,6 +1,17 @@
 <template>
   <div class="home">
-    <HelloWorld/>
+    <MemoriaVisual/>
   </div>
 </template>
+
+<script>
+import MemoriaVisual from '../components/MemoriaVisual.vue'
+
+export default{
+  name: 'HomeView',
+  components:{
+    MemoriaVisual
+  },
+}
+</script>
 
