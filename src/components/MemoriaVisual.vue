@@ -52,6 +52,9 @@ export default {
         }, 2000)
       })
     },
+    seleccionarCuadricula(cuadricula){
+      alert(cuadricula.class)
+    }
   },
 }
 </script>
