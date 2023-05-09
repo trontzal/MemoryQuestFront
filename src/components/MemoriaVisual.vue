@@ -1,6 +1,6 @@
 <template>
   <div class="componente">
-    <h2>Juego de memoria visual {{ cuadriculasIluminadas }}</h2>
+    <h2>Juego de memoria visual {{ resultados }}</h2>
     <div v-if="juegoIniciado" class="juego">
       <div class="nivel-vidas"><h2>Nivel {{ nivel }}</h2><h3>Vidas:{{ vidas }}</h3></div>
       <div class="cuadriculas" :style="{ 'grid-template-columns': `repeat(${tamano}, 1fr)` }">
@@ -30,14 +30,14 @@ export default {
       jugando : false, // Por defecto no se puede clickar el los cuadrados 
       resultado : false,
       empezar : true,
-      numero : 3
+      numero : 3,
+      resultados : [],
     }
   },
 
   methods: {
     renderizarCuadros(){
       for(let i= 0;i < this.tamano * this.tamano; i ++){
-      // damos a cada cuadricula su index en la clase para diferenciarlas
       this.cuadriculas.push({class:`cuadricula`})
       }
     },
@@ -102,7 +102,7 @@ export default {
         //si clicamos en una casilla fallada no hace nada
         }else if(cuadricula.class.includes('mal')){
           return
-          
+
         // si clikamos en la cuadricula anteriormente iluminada se vuelve verde
         }else if(this.cuadriculasIluminadas.includes(this.cuadriculas.indexOf(cuadricula))){
           cuadricula.class = 'cuadricula bien'
@@ -122,6 +122,10 @@ export default {
             this.juegoIniciado = false
             this.resultado = true
             this.empezar = true
+            this.resultados.push({
+              nivel: this.nivel,
+              fecha: new Date()
+            })
             // reiniciamos las clases de las cuadriculas
             this.cuadriculas.forEach((cuadricula, index) => {
               cuadricula.class = `cuadricula${index}`
@@ -129,7 +133,7 @@ export default {
           }
 
         }else{
-          alert("error en seleccionar cuadriculas")
+          alert("error en seleccionarcuadriculas()")
           }
 
       }else{
