@@ -25,6 +25,7 @@ export default {
       vidas : 3,
       juegoIniciado : false,
       nivel : 1,
+      jugando : false, // Por defecto no se puede clickar el los cuadrados 
     }
   },
   created() {
@@ -39,11 +40,16 @@ export default {
     iniciarJuego() {
       // lógica para iniciar el juego
       console.log('Juego iniciado')
-      this.juegoIniciado = true
+      this.juegoIniciado = true //mostrar cuadricula
+      this.vidas = 3 //reiniciar vidas
+      this.cuadriculasIluminadas = []//no se si es necesaria
+      this.nivel = 1 // reiniciar nivel
+      this.tamano = 3 //reiniciar tamaño
       this.iluminarCuadriculasAleatorias()
     },
     iluminarCuadriculasAleatorias() {
       this.cuadriculasIluminadas = []
+      this.jugando = false
       while(this.cuadriculasIluminadas.length < 3) {
         const indice = Math.floor(Math.random() * this.cuadriculas.length)
         if (!this.cuadriculasIluminadas.includes(indice)) {
@@ -56,25 +62,30 @@ export default {
       //Despues de un segundo quitamos la clase cuadricula iluminada
       setTimeout(() => {
           this.cuadriculas[indice].class = 'cuadricula'
+          this.jugando = true
         }, 2000)
       })
     },
     seleccionarCuadricula(cuadricula){
-      if(this.cuadriculasIluminadas.includes(this.cuadriculas.indexOf(cuadricula))){
-        cuadricula.class = 'cuadricula bien'
-      }else if(!this.cuadriculasIluminadas.includes(this.cuadriculas.indexOf(cuadricula))){
-        cuadricula.class = 'cuadricula mal'
-        this.vidas = this.vidas-1
-        if (this.vidas === 0) {
-          this.juegoIniciado = false
-          // reiniciamos las clases de las cuadriculas
-          this.cuadriculas.forEach((cuadricula, index) => {
-            cuadricula.class = `cuadricula${index}`
-          })
-            alert("game over")
-      }
+      if(this.jugando === true){
+        if(this.cuadriculasIluminadas.includes(this.cuadriculas.indexOf(cuadricula))){
+          cuadricula.class = 'cuadricula bien'
+        }else if(!this.cuadriculasIluminadas.includes(this.cuadriculas.indexOf(cuadricula))){
+          cuadricula.class = 'cuadricula mal'
+          this.vidas = this.vidas-1
+          if (this.vidas === 0) {
+            this.juegoIniciado = false
+            // reiniciamos las clases de las cuadriculas
+            this.cuadriculas.forEach((cuadricula, index) => {
+              cuadricula.class = `cuadricula${index}`
+            })
+              alert("game over")
+        }
+        }else{
+          alert("error en seleccionar cuadriculas")
+        }
       }else{
-        alert("error")
+        alert("aun no")
       }
     }
   },
