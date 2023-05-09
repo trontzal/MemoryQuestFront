@@ -30,33 +30,51 @@ export default {
       jugando : false, // Por defecto no se puede clickar el los cuadrados 
       resultado : false,
       empezar : true,
+      numero : 3
     }
   },
-  created() {
-    // created se usa para crear la cuadricula antes de que el componente se rendereice
-    //crear las cuadriculas dinamicas, cogemos el tamaño y lo multiplicamos por si mismo
-    for(let i= 0;i < this.tamano * this.tamano; i ++){
-      // damos a cada cuadricula su index en la clase para diferenciarlas
-      this.cuadriculas.push({class:`cuadricula${i}`})
-    }
-  },
+
   methods: {
+    renderizarCuadros(){
+      for(let i= 0;i < this.tamano * this.tamano; i ++){
+      // damos a cada cuadricula su index en la clase para diferenciarlas
+      this.cuadriculas.push({class:`cuadricula`})
+      }
+    },
+
     iniciarJuego() {
       // lógica para iniciar el juego
       console.log('Juego iniciado')
+      this.cuadriculas = []
+      this.tamano = 3 //reiniciar tamaño
+      this.renderizarCuadros()
       this.juegoIniciado = true //mostrar cuadricula
       this.vidas = 3 //reiniciar vidas
       this.cuadriculasIluminadas = []//no se si es necesaria
       this.nivel = 1 // reiniciar nivel
-      this.tamano = 3 //reiniciar tamaño
-      this.iluminarCuadriculasAleatorias()
       this.empezar = false //el boton desaparece al iniciar
       this.resultado = false
+      this.iluminarCuadriculasAleatorias()
     },
+
+    siguienteNivel(){
+      this.cuadriculas = []
+      this.nivel = this.nivel +1
+      
+      if(this.nivel == 2|3){
+        this.tamano = this.tamano +1
+        this.numero = this.numero +1
+      }else{
+        alert("te has pasado el juego")
+      }
+      this.renderizarCuadros()
+      this.iluminarCuadriculasAleatorias()
+    },
+
     iluminarCuadriculasAleatorias() {
       this.cuadriculasIluminadas = []
       this.jugando = false
-      while(this.cuadriculasIluminadas.length < 3) {
+      while(this.cuadriculasIluminadas.length < this.numero) {
         const indice = Math.floor(Math.random() * this.cuadriculas.length)// numero random entre el tamaño total
         if (!this.cuadriculasIluminadas.includes(indice)) {
           this.cuadriculasIluminadas.push(indice)//solo se agregan si no estan repetidas
@@ -69,18 +87,28 @@ export default {
       setTimeout(() => {
           this.cuadriculas[indice].class = 'cuadricula'
           this.jugando = true
-        }, 2000)
+        }, 1000)
       })
     },
+
     seleccionarCuadricula(cuadricula){
+
       if(this.jugando === true){
+
         // si clikamos en la cuadricula anteriormente iluminada se vuelve verde
         if(this.cuadriculasIluminadas.includes(this.cuadriculas.indexOf(cuadricula))){
           cuadricula.class = 'cuadricula bien'
+          this.cuadriculasIluminadas.splice(this.cuadriculasIluminadas.indexOf(this.cuadriculas.indexOf(cuadricula)), 1);
+
+          if(this.cuadriculasIluminadas.length == 0) {
+            this.siguienteNivel()
+          }
+
         //si nos equivocamos roja y restamos una vida
         }else if(!this.cuadriculasIluminadas.includes(this.cuadriculas.indexOf(cuadricula))){
           cuadricula.class = 'cuadricula mal'
           this.vidas = this.vidas-1
+
           //el juego se acaba si llegamos a 0 vidas
           if (this.vidas === 0) {
             this.juegoIniciado = false
@@ -90,10 +118,12 @@ export default {
             this.cuadriculas.forEach((cuadricula, index) => {
               cuadricula.class = `cuadricula${index}`
             })
-        }
+          }
+
         }else{
           alert("error en seleccionar cuadriculas")
-        }
+          }
+
       }else{
         alert("aun no")
       }
