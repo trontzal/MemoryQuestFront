@@ -47,6 +47,7 @@ export default {
       console.log('Juego iniciado')
       this.cuadriculas = []
       this.tamano = 3 //reiniciar tamaño
+      this.numero = 3 //reiniciamos numero de iluminadas
       this.renderizarCuadros()
       this.juegoIniciado = true //mostrar cuadricula
       this.vidas = 3 //reiniciar vidas
@@ -61,7 +62,7 @@ export default {
       this.cuadriculas = []
       this.nivel = this.nivel +1
       
-      if(this.nivel == 2|3){
+      if(this.nivel == 2| this.nivel ==3){
         this.tamano = this.tamano +1
         this.numero = this.numero +1
       }else{
@@ -94,9 +95,16 @@ export default {
     seleccionarCuadricula(cuadricula){
 
       if(this.jugando === true){
+        //si clicamos en una casilla ya acertada no hace nada
+        if(cuadricula.class.includes('bien')){
+          return
 
+        //si clicamos en una casilla fallada no hace nada
+        }else if(cuadricula.class.includes('mal')){
+          return
+          
         // si clikamos en la cuadricula anteriormente iluminada se vuelve verde
-        if(this.cuadriculasIluminadas.includes(this.cuadriculas.indexOf(cuadricula))){
+        }else if(this.cuadriculasIluminadas.includes(this.cuadriculas.indexOf(cuadricula))){
           cuadricula.class = 'cuadricula bien'
           this.cuadriculasIluminadas.splice(this.cuadriculasIluminadas.indexOf(this.cuadriculas.indexOf(cuadricula)), 1);
 
@@ -125,7 +133,7 @@ export default {
           }
 
       }else{
-        alert("aun no")
+        return
       }
     }
   },
