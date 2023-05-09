@@ -62,14 +62,14 @@ export default {
       this.cuadriculas = []
       this.nivel = this.nivel +1
       
-      if(this.nivel == 2| this.nivel ==3){
-        this.tamano = this.tamano +1
+      if(this.nivel > 1){
         this.numero = this.numero +1
-      }else if(this.nivel == 4 | this.nivel == 5){
-        this.numero = this.numero +1
-    }else if(this.nivel == 6){
-        this.tamano = this.tamano +1
-    }else{
+
+        if(this.nivel %2 == 0){
+          this.tamano = this.tamano +1
+        }
+
+        }else{
         console.log("faltan niveles")
       }
       this.renderizarCuadros()
