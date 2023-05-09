@@ -65,8 +65,12 @@ export default {
       if(this.nivel == 2| this.nivel ==3){
         this.tamano = this.tamano +1
         this.numero = this.numero +1
-      }else{
-        alert("te has pasado el juego")
+      }else if(this.nivel == 4 | this.nivel == 5){
+        this.numero = this.numero +1
+    }else if(this.nivel == 6){
+        this.tamano = this.tamano +1
+    }else{
+        console.log("faltan niveles")
       }
       this.renderizarCuadros()
       this.iluminarCuadriculasAleatorias()
@@ -121,9 +125,9 @@ export default {
           if (this.vidas === 0) {
             this.juegoIniciado = false
             this.resultado = true
-            this.empezar = true
+            this.empezar = true            
             this.resultados.push({
-              nivel: this.nivel,
+              puntuacion: this.nivel,
               fecha: new Date()
             })
             // reiniciamos las clases de las cuadriculas
