@@ -1,10 +1,21 @@
 <template>
   <div class="home">
-    Ruta principal
+    <MemoriaVisualComp/>
   </div>
 </template>
 
-<script>
+<style>
 
+</style>
+
+<script>
+import MemoriaVisualComp from '../components/MemoriaVisualComp.vue'
+
+export default{
+  name: 'HomeView',
+  components:{
+    MemoriaVisualComp
+  },
+}
 </script>
 
