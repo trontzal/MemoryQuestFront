@@ -1,6 +1,6 @@
 <template>
   <div class="componente">
-    <h2>Juego de memoria visual {{ resultados }}</h2>
+    <h2 class="colorPrimario">Juego de memoria visual {{ resultados }}</h2>
     <div v-if="juegoIniciado" class="juego">
       <div class="nivel-vidas"><h2>Nivel {{ nivel }}</h2><h3>Vidas:{{ vidas }}</h3></div>
       <div class="cuadriculas" :style="{ 'grid-template-columns': `repeat(${tamano}, 1fr)` }">
@@ -149,6 +149,7 @@ export default {
 </script>
 
 <style scoped>
+  @import "../styles/main.css";
   *{
     border: 1px solid black;
   }
