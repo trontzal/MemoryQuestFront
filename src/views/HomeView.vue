@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <MemoriaVisualComp/>
+    <h2>Pagina principal</h2>
   </div>
 </template>
 
@@ -9,12 +9,10 @@
 </style>
 
 <script>
-import MemoriaVisualComp from '../components/MemoriaVisualComp.vue'
 
 export default{
   name: 'HomeView',
   components:{
-    MemoriaVisualComp
   },
 }
 </script>

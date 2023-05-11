@@ -1,6 +1,17 @@
 <template>
   <div class="componente">
-    <h2>Juego de memoria visual {{ resultados }}</h2>
+    <h2>Juego de memoria visual</h2>
+    <div v-if="juegoIniciado == false" class="vistaInicial">
+      <div class="memoriaVisualCuadricula"></div>
+      <div class="memoriaVisualCuadricula"></div>
+      <div class="memoriaVisualCuadricula"></div>
+      <div class="memoriaVisualCuadricula"></div>
+      <div class="memoriaVisualCuadricula"></div>
+      <div class="memoriaVisualCuadricula"></div>
+      <div class="memoriaVisualCuadricula"></div>
+      <div class="memoriaVisualCuadricula"></div>
+      <div class="memoriaVisualCuadricula"></div>      
+    </div>
     <div v-if="juegoIniciado" class="juego">
       <div class="nivel-vidas"><h2>Nivel {{ nivel }}</h2><h3>Vidas:{{ vidas }}</h3></div>
       <div class="cuadriculas" :style="{ 'grid-template-columns': `repeat(${tamano}, 1fr)` }">
@@ -185,9 +196,24 @@ export default {
   .mal{
     background-color: red;
   }
+
+
+
+  /* Parte de la presentacion del juego */
+  .vistaInicial{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .vistaInicial > div{
+    height: 1rem;
+    width: 1rem;
+  }
 </style>
 
-<style lang="scss">
+
+<!-- sass para los colores primarios -->
+<style lang="scss" scoped>
   @import "../styles/main.scss";
   h2{
     background-color: $primary-color;
