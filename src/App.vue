@@ -1,61 +1,69 @@
 <template class="body">
-  <div class="header">
-    <div></div>
-    <h2>Logo</h2>
-    <div class="opciones">
+  <body>
+    <div class="header">
+      <div></div>
+      <h2>Logo</h2>
+      <div class="opciones">
 
-    </div>
-  </div>
-
-  <div class="flex">
-    <div class="sidebar">
-
-      <router-link to="/">
-        <div class="juegoEspecifico">
-          <div class="imagenJuego">
-            <img src="@/assets/imagenes/miniaturas/Group38.png" alt="">
-          </div>
-          <div class="nombreJuegoEspecifico">
-            Home
-          </div>
-        </div>
-      </router-link>
-
-      <router-link to="/MemoriaVisual">
-        <div class="juegoEspecifico">
-          <div class="imagenJuego">
-            <img src="@/assets/imagenes/miniaturas/Group38.png" alt="">
-          </div>
-          <div class="nombreJuegoEspecifico">
-            Memoria Visual
-          </div>
-        </div>
-      </router-link>
-
-      <router-link to="/MemoriaVisual">
-        <div class="juegoEspecifico">
-          <div class="imagenJuego">
-            <img src="@/assets/imagenes/miniaturas/Group38.png" alt="">
-          </div>
-          <div class="nombreJuegoEspecifico">
-            Memoria Visual
-          </div>
-        </div>
-      </router-link>
-
-
+      </div>
     </div>
 
-    <div class="routerview">
-      <router-view/>
+    <div class="flex">
+      <div class="sidebar">
+
+        <router-link to="/">
+          <div class="juegoEspecifico">
+            <div class="imagenJuego">
+              <img src="@/assets/imagenes/miniaturas/Group38.png" alt="">
+            </div>
+            <div class="nombreJuegoEspecifico">
+              Home
+            </div>
+          </div>
+        </router-link>
+
+        <router-link to="/MemoriaVisual">
+          <div class="juegoEspecifico">
+            <div class="imagenJuego">
+              <img src="@/assets/imagenes/miniaturas/Group38.png" alt="">
+            </div>
+            <div class="nombreJuegoEspecifico">
+              Memoria Visual
+            </div>
+          </div>
+        </router-link>
+
+        <router-link to="/MemoriaVisual">
+          <div class="juegoEspecifico">
+            <div class="imagenJuego">
+              <img src="@/assets/imagenes/miniaturas/Group38.png" alt="">
+            </div>
+            <div class="nombreJuegoEspecifico">
+              Memoria Visual
+            </div>
+          </div>
+        </router-link>
+
+
+      </div>
+
+      <div class="routerview">
+        <router-view/>
+      </div>
     </div>
-  </div>
+  </body>
 </template>
 
 <style scoped>
 
   *{
     border: 1px solid black;
+    text-align: center;
+  }
+
+  body{
+    margin: 0 auto;
+    width: 90%;
   }
 
   .header{
