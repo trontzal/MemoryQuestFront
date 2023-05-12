@@ -9,8 +9,41 @@
 
   <div class="flex">
     <div class="sidebar">
-      <router-link to="/">Home</router-link>
-      <router-link to="/MemoriaVisual">Memoria Visual</router-link>
+
+      <router-link to="/">
+        <div class="juegoEspecifico">
+          <div class="imagenJuego">
+            <img src="@/assets/imagenes/miniaturas/Group38.png" alt="">
+          </div>
+          <div class="nombreJuegoEspecifico">
+            Home
+          </div>
+        </div>
+      </router-link>
+
+      <router-link to="/MemoriaVisual">
+        <div class="juegoEspecifico">
+          <div class="imagenJuego">
+            <img src="@/assets/imagenes/miniaturas/Group38.png" alt="">
+          </div>
+          <div class="nombreJuegoEspecifico">
+            Memoria Visual
+          </div>
+        </div>
+      </router-link>
+
+      <router-link to="/MemoriaVisual">
+        <div class="juegoEspecifico">
+          <div class="imagenJuego">
+            <img src="@/assets/imagenes/miniaturas/Group38.png" alt="">
+          </div>
+          <div class="nombreJuegoEspecifico">
+            Memoria Visual
+          </div>
+        </div>
+      </router-link>
+
+
     </div>
 
     <div class="routerview">
@@ -39,12 +72,23 @@
   .sidebar{
     display: flex;
     flex-direction: column;
-    width: 15%;
+    width: 20%;
   }
   
   .routerview{
-    width: 80%;
+    width: 75%;
+  }
+ /*  Items del sidebar*/
+  .juegoEspecifico{
+    display: flex;
   }
 
+  .juegoEspecifico > div{
+    display: flex;
+    align-items: center;
+  }
 
+  .nombreJuegoEspecifico{
+    padding: 0 1rem 0 1rem;
+  }
 </style>

@@ -2,15 +2,7 @@
   <div class="componente">
     <h2>Juego de memoria visual</h2>
     <div v-if="juegoIniciado == false" class="vistaInicial">
-      <div class="memoriaVisualCuadricula"></div>
-      <div class="memoriaVisualCuadricula"></div>
-      <div class="memoriaVisualCuadricula"></div>
-      <div class="memoriaVisualCuadricula"></div>
-      <div class="memoriaVisualCuadricula"></div>
-      <div class="memoriaVisualCuadricula"></div>
-      <div class="memoriaVisualCuadricula"></div>
-      <div class="memoriaVisualCuadricula"></div>
-      <div class="memoriaVisualCuadricula"></div>      
+     
     </div>
     <div v-if="juegoIniciado" class="juego">
       <div class="nivel-vidas"><h2>Nivel {{ nivel }}</h2><h3>Vidas:{{ vidas }}</h3></div>
@@ -208,15 +200,6 @@ export default {
   .vistaInicial > div{
     height: 1rem;
     width: 1rem;
-  }
-</style>
-
-
-<!-- sass para los colores primarios -->
-<style lang="scss" scoped>
-  @import "../styles/main.scss";
-  h2{
-    background-color: $primary-color;
   }
 </style>
 
