@@ -3,9 +3,15 @@
     <div class="header color1">
       <div></div>
       <h2>Logo</h2>
-      <div class="opciones">
-        <div class="ranks">
-          <i class="fa-regular fa-trophy-star"></i>
+      <div class="dropdowns">
+        <div class="rank">
+          <img src="./assets/imagenes/dropdowns/rank.png" alt="">
+        </div>
+        <div class="perfil">
+          <img src="./assets/imagenes/dropdowns/perfil.png" alt="">
+        </div>
+        <div class="ajustes">
+          <img src="./assets/imagenes/dropdowns/ajustes.png" alt="">
         </div>
       </div>
     </div>
@@ -38,21 +44,32 @@
         <router-view/>
       </div>
     </div>
+    <!-- <div class="footer">
+      <div class="redes">
+        iconos de redes
+      </div>
+      <div class="contacto">
+        email
+      </div>
+      <div class="derechos">
+        derechos
+      </div>
+    </div> -->
   </body>
 </template>
 
 <style>
 /* colores pricipales */
   .color1{
-    background-color: #4B5D5F;
+    background-color: #4B5D5F !important;
   }
 
   .color2{
-    background-color: #ABB7CA;
+    background-color: #ABB7CA !important;
   }
 
   .color3{
-    background-color: white;
+    background-color: white !important;
   }
 
   /* colores cuando la ruta esta seleccionada */
@@ -74,9 +91,22 @@
   }
 
   .header{
-    display: flex;
-    justify-content:space-between;
+    display: grid;
+    grid-template-columns:repeat(3, 1fr);
     margin-bottom: 1.5rem;
+    color: white;
+  }
+
+  .dropdowns{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: end;
+    margin-right: 3rem;
+  }
+
+  .dropdowns > div > img{
+    width: 80%;
   }
   
   .flex{
@@ -84,10 +114,12 @@
     gap: 2rem;
   }
 
+
   .sidebar{
     display: flex;
     flex-direction: column;
     width: 20%;
+    font-size: x-large;
   }
   
   .routerview{
@@ -99,6 +131,7 @@
     margin-bottom: 1rem;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
   }
 
   .juegoEspecifico > div{
@@ -119,5 +152,12 @@
   .nombreJuegoEspecifico{
     padding: 0 1rem 0 1rem;
     flex-grow: 1;
+  }
+
+  /* footer */
+  .footer{
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
   }
 </style>
