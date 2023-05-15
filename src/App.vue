@@ -37,6 +37,14 @@
             </div>        
         </router-link>
 
+        <router-link to="/JuegoCartas.vue" class="juegoEspecifico">        
+            <div class="imagenJuego">
+              <img src="@/assets/imagenes/miniaturas/MemoriaVisual.png" alt="">
+            </div>
+            <div class="nombreJuegoEspecifico">
+              Cartas
+            </div>        
+        </router-link>
 
       </div>
 
