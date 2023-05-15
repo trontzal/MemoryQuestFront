@@ -1,20 +1,27 @@
 <template>
-  <div class="componente">
+  <div class="comp color2">
     <h2>Juego de memoria visual</h2>
     <div v-if="juegoIniciado == false" class="vistaInicial">
-     
+      <img src="../assets/imagenes/iconosGrandes/MemoriaVisual.png" alt="">
+      <div v-if="resultado == false" class="descripcion">
+        <p>El objetivo de este juego es recordar y repetir la secuencia de iluminación en una cuadrícula de cuadrados. Por cada nivel superado la dificultad aumenta.</p>
+      </div>
+      <div v-if="resultado" class="resultado">
+        Has llegado al nivel {{ nivel }}
+      </div>
     </div>
     <div v-if="juegoIniciado" class="juego">
-      <div class="nivel-vidas"><h2>Nivel {{ nivel }}</h2><h3>Vidas:{{ vidas }}</h3></div>
+      <div class="nivel-vidas">
+        <h2 class="nivel">Nivel {{ nivel }}</h2>
+        <h3 class="vidas">Vidas:{{ vidas }}</h3>
+      </div>
       <div class="cuadriculas" :style="{ 'grid-template-columns': `repeat(${tamano}, 1fr)` }">
         <div v-for="(cuadricula, index) in cuadriculas" :key="index" :class="cuadricula.class" @click="seleccionarCuadricula(cuadricula)">
         </div>
       </div>
     </div>
-    <div v-if="resultado" class="resultado">
-      Has llegado al nivel {{ nivel }}
-    </div>
-    <button @click="iniciarJuego" v-if="empezar">Preparado</button>
+
+    <button @click="iniciarJuego" v-if="empezar" class="btn">Preparado</button>
   </div>
 </template>
 
@@ -95,7 +102,7 @@ export default {
       setTimeout(() => {
           this.cuadriculas[indice].class = 'cuadricula'
           this.jugando = true
-        }, 1000)
+        }, 1500)
       })
     },
 
@@ -152,9 +159,6 @@ export default {
 </script>
 
 <style scoped>
-  *{
-    border: 1px solid black;
-  }
 
   .juego {
     display: flex;
@@ -164,6 +168,13 @@ export default {
     margin-top: 1rem;
   }
 
+  .nivel-vidas{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+
   .cuadriculas{
     display: grid;
   }
@@ -171,6 +182,9 @@ export default {
   .cuadriculas > div{
     height: 3rem;
     width: 3rem;
+    margin: 0.3rem;
+    border-radius: 10px;
+    
   }
 
   .cuadricula{
@@ -178,11 +192,11 @@ export default {
   }
 
   .cuadricula-iluminada{
-    background-color: black;
+    background-color: #4B5D5F;
   }
 
   .bien{
-    background-color: green;
+    background-color: #4B5D5F;
   }
   
   .mal{
@@ -190,16 +204,5 @@ export default {
   }
 
 
-
-  /* Parte de la presentacion del juego */
-  .vistaInicial{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  .vistaInicial > div{
-    height: 1rem;
-    width: 1rem;
-  }
 </style>
 

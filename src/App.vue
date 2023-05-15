@@ -67,17 +67,37 @@
 </template>
 
 <style>
-/* colores pricipales */
+/* colores pricipales y elementos globales*/
   .color1{
-    background-color: #4B5D5F !important;
+    background-color: #4B5D5F ;
   }
 
   .color2{
-    background-color: #ABB7CA !important;
+    background-color: #ABB7CA ;
   }
 
   .color3{
-    background-color: white !important;
+    background-color: white ;
+  }
+
+  .btn{
+    background-color: #4B5D5F;
+    height: 2rem;
+    width: 8rem;
+  }
+
+  .comp{
+    height: 30rem;
+    padding: 1.5rem;
+  }
+
+  .vistaInicial{
+    width: 70%;
+    margin:0 auto;
+  }
+
+  .vistaInicial > img{
+    margin: 2rem 0 1rem 0;
   }
 
   /* colores cuando la ruta esta seleccionada */
