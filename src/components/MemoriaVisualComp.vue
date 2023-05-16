@@ -13,7 +13,11 @@
     <div v-if="juegoIniciado" class="juego">
       <div class="nivel-vidas">
         <h2 class="nivel">Nivel {{ nivel }}</h2>
-        <h3 class="vidas">Vidas:{{ vidas }}</h3>
+        <div class="vidas">
+          <img src="../assets/imagenes/Vidas.png" alt="">
+          <img v-if="vidas > 1" src="../assets/imagenes/Vidas.png" alt="">
+          <img v-if="vidas == 3" src="../assets/imagenes/Vidas.png" alt="">
+        </div>
       </div>
       <div class="cuadriculas" :style="{ 'grid-template-columns': `repeat(${tamano}, 1fr)` }">
         <div v-for="(cuadricula, index) in cuadriculas" :key="index" :class="cuadricula.class" @click="seleccionarCuadricula(cuadricula)">
@@ -200,7 +204,17 @@ export default {
   }
   
   .mal{
-    background-color: red;
+    
+  }
+
+  .vidas{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .vidas{
+    width: 1rem;
   }
 
 

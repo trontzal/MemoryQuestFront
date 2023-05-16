@@ -87,7 +87,7 @@
   }
 
   .comp{
-    height: 30rem;
+    height: 40rem;
     padding: 1.5rem;
   }
 
