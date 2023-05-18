@@ -59,6 +59,12 @@ export default {
     iniciarJuego() {
       // lógica para iniciar el juego
       console.log('Juego iniciado')
+      // hacemos que al empezar se apunte automaticamente al juego al empezar
+      window.scrollTo({
+        top: 100,
+        behavior: 'smooth'
+      })
+
       this.cuadriculas = []
       this.tamano = 3 //reiniciar tamaño
       this.numero = 3 //reiniciamos numero de iluminadas
@@ -153,7 +159,6 @@ export default {
               })
             }, 1000)
             }
-
 
         }else{
           alert("error en seleccionarcuadriculas()")

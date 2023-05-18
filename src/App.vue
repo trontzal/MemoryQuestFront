@@ -1,20 +1,6 @@
 <template class="body">
   <body>
-    <div class="header color1">
-      <div></div>
-      <h2>Logo</h2>
-      <div class="dropdowns">
-        <div class="rank">
-          <img src="./assets/imagenes/dropdowns/rank.png" alt="">
-        </div>
-        <div class="perfil">
-          <img src="./assets/imagenes/dropdowns/perfil.png" alt="">
-        </div>
-        <div class="ajustes">
-          <img src="./assets/imagenes/dropdowns/ajustes.png" alt="">
-        </div>
-      </div>
-    </div>
+    <NavBarComp/>
 
     <div class="flex">
       <div class="sidebar">
@@ -46,6 +32,33 @@
             </div>        
         </router-link>
 
+        <router-link to="/" class="juegoEspecifico">         
+            <div class="imagenJuego">
+              <img src="@/assets/imagenes/miniaturas/MemoriaVisual.png" alt="">
+            </div>
+            <div class="nombreJuegoEspecifico">
+              Home
+            </div>
+        </router-link>
+
+        <router-link to="/" class="juegoEspecifico">         
+            <div class="imagenJuego">
+              <img src="@/assets/imagenes/miniaturas/MemoriaVisual.png" alt="">
+            </div>
+            <div class="nombreJuegoEspecifico">
+              Home
+            </div>
+        </router-link>
+
+        <router-link to="/" class="juegoEspecifico">         
+            <div class="imagenJuego">
+              <img src="@/assets/imagenes/miniaturas/MemoriaVisual.png" alt="">
+            </div>
+            <div class="nombreJuegoEspecifico">
+              Home
+            </div>
+        </router-link>
+
       </div>
 
       <div class="routerview">
@@ -65,6 +78,17 @@
     </div> -->
   </body>
 </template>
+
+<script>
+  import NavBarComp from './components/NavBarComp.vue'
+
+  export default{
+    name: 'NavBar',
+    components:{
+      NavBarComp
+    }
+  }
+</script>
 
 <style>
 /* colores pricipales y elementos globales*/
@@ -87,7 +111,7 @@
   }
 
   .comp{
-    height: 40rem;
+    height: 37rem;
     padding: 1.5rem;
   }
 
@@ -106,6 +130,8 @@
   color: white;
 }
 </style>
+
+
 
 <style scoped>
 
