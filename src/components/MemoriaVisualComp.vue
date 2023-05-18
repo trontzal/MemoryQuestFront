@@ -127,28 +127,33 @@ export default {
           this.cuadriculasIluminadas.splice(this.cuadriculasIluminadas.indexOf(this.cuadriculas.indexOf(cuadricula)), 1);
 
           if(this.cuadriculasIluminadas.length == 0) {
+            setTimeout(() =>{
             this.siguienteNivel()
-          }
+          }, 500)
+        }
 
         //si nos equivocamos roja y restamos una vida
         }else if(!this.cuadriculasIluminadas.includes(this.cuadriculas.indexOf(cuadricula))){
-          cuadricula.class = 'cuadricula mal'
+          cuadricula.class = 'cuadricula mal vibrate'
           this.vidas = this.vidas-1
 
           //el juego se acaba si llegamos a 0 vidas
           if (this.vidas === 0) {
-            this.juegoIniciado = false
-            this.resultado = true
-            this.empezar = true            
-            this.resultados.push({
-              puntuacion: this.nivel,
-              fecha: new Date()
-            })
+            setTimeout(() =>{
+              this.juegoIniciado = false
+              this.resultado = true
+              this.empezar = true           
+              this.resultados.push({
+                puntuacion: this.nivel,
+                fecha: new Date()
+              })
             // reiniciamos las clases de las cuadriculas
-            this.cuadriculas.forEach((cuadricula, index) => {
-              cuadricula.class = `cuadricula${index}`
-            })
-          }
+              this.cuadriculas.forEach((cuadricula, index) => {
+                cuadricula.class = `cuadricula${index}`
+              })
+            }, 1000)
+            }
+
 
         }else{
           alert("error en seleccionarcuadriculas()")
@@ -181,14 +186,13 @@ export default {
 
   .cuadriculas{
     display: grid;
+    height: 24rem;
+    width: 24rem;
   }
 
   .cuadriculas > div{
-    height: 3rem;
-    width: 3rem;
     margin: 0.3rem;
     border-radius: 10px;
-    
   }
 
   .cuadricula{
@@ -202,10 +206,21 @@ export default {
   .bien{
     background-color: #4B5D5F;
   }
-  
-  .mal{
-    
-  }
+
+@keyframes vibrate {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(2px, -2px); }
+  60% { transform: translate(-2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+.mal.vibrate {
+  animation: vibrate 0.5s ;
+  background-color: rgba(206, 206, 206, 0.582);
+}
+
 
   .vidas{
     display: flex;
