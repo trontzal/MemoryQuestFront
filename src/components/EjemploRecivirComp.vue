@@ -1,10 +1,10 @@
 <template>
+    <h1>Ejemplo de obetener datos</h1>
     <div v-if="datos">
-        <p>{{ datos.mensaje }}</p>
-        <p>Numero: {{ datos.numero }}</p>
-        <ul>
-            <li v-for="item in datos.lista" :key="item">{{ item }}</li>
-        </ul>
+        <div v-for="dato in datos" :key="dato">
+            <p>Nombre: {{ dato.Nombre }}</p>
+            <p>Texto: {{ dato.Texto }}</p>
+        </div>
     </div>
     <div v-else>
         no sale
@@ -33,3 +33,9 @@
         }
     }
 </script>
+
+<style scoped>
+*{
+    background-color: blue;
+}
+</style>
