@@ -30,6 +30,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'MemoriaVisual',
   data() {
@@ -148,11 +149,8 @@ export default {
             setTimeout(() =>{
               this.juegoIniciado = false
               this.resultado = true
-              this.empezar = true           
-              this.resultados.push({
-                puntuacion: this.nivel,
-                fecha: new Date()
-              })
+              this.empezar = true
+
             // reiniciamos las clases de las cuadriculas
               this.cuadriculas.forEach((cuadricula, index) => {
                 cuadricula.class = `cuadricula${index}`

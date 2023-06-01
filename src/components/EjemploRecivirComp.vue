@@ -1,36 +1,35 @@
 <template>
-    <h1>Ejemplo de obetener datos</h1>
-    <div v-if="datos">
-        <div v-for="dato in datos" :key="dato">
-            <p>Nombre: {{ dato.Nombre }}</p>
-            <p>Texto: {{ dato.Texto }}</p>
+    <h1>Ejemplo de obetener datos de la db</h1>
+    <div>
+        <button @click="puntuaciones">Obtener</button>
+        <div v-for="dato in datos" :key="dato.id">
+            {{ dato }}
         </div>
-    </div>
-    <div v-else>
-        no sale
     </div>
 </template>
 
 <script>
-
-    import axios from 'axios'
-
     export default{
         name: "RecivirEjemplo",
         data(){
             return{
-                datos: null
+                datos: []
             };
         },
-        mounted(){
-            axios.get('http://localhost:5000/ejemplo')
-            .then(response => {
-                this.datos = response.data;
-            })
-            .catch(error => {
-                console.log(error);
-            });
-        }
+
+        methods: {
+            puntuaciones: async function () {
+                const url = "http://127.0.0.1:5000/todo";
+                try {
+                    const response = await fetch(url);
+                    const data = await response.json();
+                    this.datos = data;
+                    console.log(this.datos);
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+        },  
     }
 </script>
 
