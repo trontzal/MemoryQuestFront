@@ -6,6 +6,13 @@
             {{ dato }}
         </div>
     </div>
+
+    <h2>Recibir solo de un usuario</h2>
+    <label>Nombre: <input type="text" v-model="usuario"></label>
+    <button @click="unUsuario">Obtener</button>
+    <div>
+        {{ enUsuario }}
+    </div>
 </template>
 
 <script>
@@ -13,7 +20,9 @@
         name: "RecivirEjemplo",
         data(){
             return{
-                datos: []
+                datos: [],
+                enUsuario: [],
+                usuario: ""
             };
         },
 
@@ -25,6 +34,18 @@
                     const data = await response.json();
                     this.datos = data;
                     console.log(this.datos);
+                } catch (error) {
+                    console.error(error);
+                }
+            },
+
+            unUsuario: async function () {
+                const url = "http://127.0.0.1:5000/todo/" + this.usuario;
+                try {
+                    const response = await fetch(url);
+                    const data = await response.json();
+                    this.enUsuario = data;
+                    console.log(this.enUsuario);
                 } catch (error) {
                     console.error(error);
                 }
