@@ -46,7 +46,7 @@ export default {
       resultado : false,
       empezar : true,
       numero : 3,
-      resultados : [],
+      resultados : "",
     }
   },
 
@@ -150,7 +150,8 @@ export default {
               this.juegoIniciado = false
               this.resultado = true
               this.empezar = true
-
+              this.resultados = this.nivel
+              this.guardarPuntos(this.resultados)
             // reiniciamos las clases de las cuadriculas
               this.cuadriculas.forEach((cuadricula, index) => {
                 cuadricula.class = `cuadricula${index}`
@@ -165,6 +166,18 @@ export default {
       }else{
         return
       }
+    },
+
+    async guardarPuntos(resultados){
+      const url = "http://127.0.0.1:5000/todo"
+      await fetch(url, {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'},
+        body: `{"usuario":"anonimo", "puntos":"${resultados}", "tipo_de_juego":"memoriaVisual"}`
+      })
+      .catch((e) => {
+        console.log("**************** Error: ", e)
+      })
     }
   },
 }
