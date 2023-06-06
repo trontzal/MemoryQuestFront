@@ -1,14 +1,25 @@
 <template>
-    <h1>ranking</h1>
-    <h2>Usuario</h2>
-    <div>
-      {{ posicionUsuario }} {{ datosUsuario }}
+  <div v-if="datosUsuario || datosJuego || posicionUsuario" class="ranking">
+    <h2>Ranking</h2>
+    <div class="posicionUsuario">
+      <p>Tu Posicion:</p>
+      <div v-if="datosUsuario">
+        {{ posicionUsuario }} {{ datosUsuario.usuario }} {{ datosUsuario.puntos }}
+      </div>
+      <div v-else>
+        Cargando...
+      </div>
+
     </div>
     <h2>Top5</h2>
     <div v-for="(top, index) in top5" :key="index">
         {{ index + 1 }} {{ top.usuario }}  {{ top.puntos }} {{ top.tipo_de_juego }}
     </div>
-  </template>
+  </div>
+  <div v-else class="cargando">
+    Cargando...
+  </div>
+</template>
   
   <script>
   export default {

@@ -14,7 +14,7 @@
             </div>
         </router-link>
 
-        <router-link to="/MemoriaVisual" class="juegoEspecifico">        
+        <router-link to="/MemoriaVisual" class="juegoEspecifico">   
             <div class="imagenJuego">
               <img src="@/assets/imagenes/miniaturas/MemoriaVisual.png" alt="">
             </div>

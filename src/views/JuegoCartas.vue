@@ -1,5 +1,5 @@
 <template>
-    <JuegoCartasComp/>
+    <JuegoCartasComp />
 </template>
 
 <script>
