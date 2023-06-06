@@ -2,8 +2,7 @@
     <h1>ranking</h1>
     <h2>Usuario</h2>
     <div>
-      <p>Posición: {{ posicionUsuario }}</p>
-      {{ datosUsuario }}
+      {{ posicionUsuario }} {{ datosUsuario }}
     </div>
     <h2>Top5</h2>
     <div v-for="(top, index) in top5" :key="index">
