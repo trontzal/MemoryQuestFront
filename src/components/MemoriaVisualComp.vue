@@ -46,7 +46,7 @@ export default {
       resultado : false,
       empezar : true,
       numero : 3,
-      resultados : "",
+      resultados : "", // El resultado final que se envia al back
     }
   },
 
