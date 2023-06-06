@@ -2,8 +2,8 @@
     <h1>ranking</h1>
     <h2>Usuario</h2>
     <div>
-      {{ datosUsuario }}
       <p>Posición: {{ posicionUsuario }}</p>
+      {{ datosUsuario }}
     </div>
     <h2>Top5</h2>
     <div v-for="(top, index) in top5" :key="index">
@@ -20,7 +20,7 @@
         datosUsuario: null,
         datosJuego: null,
         usuario : "anonimo",
-        juego : "memoriaVisual",
+        tipo_de_juego : "memoriaVisual",
         posicionUsuario : null,
       };
     },
@@ -40,12 +40,11 @@
   
     methods: {
       async recibirDbDeJuegoEspecifico() {
-        const url = "http://127.0.0.1:5000/todo/game/" + this.juego;
+        const url = "http://127.0.0.1:5000/todo/game/" + this.tipo_de_juego;
         try {
           const response = await fetch(url);
           const data = await response.json();
           this.datosJuego = data;
-          console.log(this.datosJuego);
         } catch (error) {
           console.error(error);
         }
@@ -58,20 +57,21 @@
         // Filtrar el dato de mayor puntuación del usuario
         const maxPuntos = Math.max(...data.map((item) => item.puntos));
         this.datosUsuario = data.find((item) => item.puntos === maxPuntos);
-        console.log(this.datosUsuario);
-        const posicionUrl =
-          "http://127.0.0.1:5000/todo/posicion/" +
-          this.usuario +
-          "/" +
-          this.juego;
-        const posicionResponse = await fetch(posicionUrl);
-        const posicionData = await posicionResponse.json();
-        this.posicionUsuario = posicionData;
-        console.log(this.posicionUsuario);
       } catch (error) {
         console.error(error);
       }
       },
+      async recibirDbDePosicionUsuario() {
+        const url = "http://127.0.0.1:5000/todo/posicion/" + this.usuario + "/" + this.tipo_de_juego;
+        try {
+          const response = await fetch(url);
+          const data = await response.json();
+          this.posicionUsuario = data;
+          console.log("****************" + this.posicionUsuario);
+        } catch (error) {
+          console.error(error + "******************");
+        }
+      }
       
 
     },
@@ -79,6 +79,7 @@
     mounted() {
       this.recibirDbDeJuegoEspecifico();
       this.recibirDbDeUsuario();
+      this.recibirDbDePosicionUsuario();
     }
   };
   </script>
