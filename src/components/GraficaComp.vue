@@ -1,13 +1,17 @@
 <template>
-    <h2>Grafico</h2>
-    <div v-if="datosGrafico">
-        {{ datosgrafico }}
+    <div>
+      <h2>Grafico</h2>
+      <div v-if="datosGrafico">
+        <div v-for="(dato, index) in datosGrafico" :key="index">
+            {{ dato.x }} {{ dato.y }}
+        </div>
+      </div>
+      <div v-else>
+        Cargando...
+      </div>
     </div>
-    <div v-else>
-        cargando...
-    </div>
-</template>
-
+  </template>
+  
 <script>
     export default {
         data() {
@@ -23,7 +27,7 @@
                 const response = await fetch(url);
                 const data = await response.json();
                 this.datosGrafico = data;
-                console.log(this.datosGrafico)
+                console.log(this.datosGrafico.x)
                 } catch (error) {
                 console.error(error);
                 }
