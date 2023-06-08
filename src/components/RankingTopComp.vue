@@ -13,7 +13,7 @@
     </div>
     <h2>Top5</h2>
     <div v-for="(top, index) in top5" :key="index">
-        {{ index + 1 }} {{ top.usuario }}  {{ top.puntos }} {{ top.tipo_de_juego }}
+        {{ index + 1 }} {{ top.usuario }}  {{ top.puntos }}  {{ top.tipo_de_juego }}
     </div>
   </div>
   <div v-else class="cargando">
@@ -60,16 +60,16 @@
         }
       },
       async recibirDbDeUsuario() {
-      const url = "http://127.0.0.1:5000/todo/user/" + this.usuario;
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        // Filtrar el dato de mayor puntuación del usuario
-        const maxPuntos = Math.max(...data.map((item) => item.puntos));
-        this.datosUsuario = data.find((item) => item.puntos === maxPuntos);
-      } catch (error) {
-        console.error(error);
-      }
+        const url = "http://127.0.0.1:5000/todo/user/" + this.usuario;
+        try {
+          const response = await fetch(url);
+          const data = await response.json();
+          // Filtrar el dato de mayor puntuación del usuario
+          const maxPuntos = Math.max(...data.map((item) => item.puntos));
+          this.datosUsuario = data.find((item) => item.puntos === maxPuntos);
+        } catch (error) {
+          console.error(error);
+        }
       },
       async recibirDbDePosicionUsuario() {
         const url = "http://127.0.0.1:5000/todo/posicion/" + this.usuario + "/" + this.tipo_de_juego;

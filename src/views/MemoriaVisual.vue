@@ -1,19 +1,19 @@
 <template>
     <MemoriaVisualComp/>
-    <RankingTopComp/>
-    <EjemploRecivirComp/>
+    <!-- <RankingTopComp/> -->
+    <GraficaComp/>
 </template>
 
 <script>
     import MemoriaVisualComp from "../components/MemoriaVisualComp.vue"
-    import EjemploRecivirComp from "@/components/EjemploRecivirComp.vue";
-    import RankingTopComp from "../components/RankingTopComp.vue";
+    import GraficaComp from "@/components/GraficaComp.vue";
+    // import RankingTopComp from "../components/RankingTopComp.vue";
     export default{
         name: 'MemoriaVisual',
         components:{
             MemoriaVisualComp,
-            EjemploRecivirComp,
-            RankingTopComp
+            // RankingTopComp,
+            GraficaComp
         },
     }
 </script>

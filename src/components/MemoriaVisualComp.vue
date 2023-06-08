@@ -173,7 +173,7 @@ export default {
       await fetch(url, {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
-        body: `{"usuario":"anonimo", "puntos":"${resultados}", "tipo_de_juego":"memoriaVisual"}`
+        body: `{"usuario":"prueba", "puntos":"${resultados}", "tipo_de_juego":"memoriaVisual"}`
       })
       .catch((e) => {
         console.log("**************** Error: ", e)
