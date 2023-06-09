@@ -14,9 +14,9 @@
       <div class="nivel-vidas">
         <h2 class="nivel">Nivel {{ nivel }}</h2>
         <div class="vidas">
-          <img src="../assets/imagenes/Vidas.png" alt="">
-          <img v-if="vidas > 1" src="../assets/imagenes/Vidas.png" alt="">
-          <img v-if="vidas == 3" src="../assets/imagenes/Vidas.png" alt="">
+          <img v-if="vidas >2" src="../assets/imagenes/Vidas.png" alt="">
+          <img v-if="vidas >1" src="../assets/imagenes/Vidas.png" alt="">
+          <img v-if="vidas > 0" src="../assets/imagenes/Vidas.png" alt="">
         </div>
       </div>
       <div class="cuadriculas" :style="{ 'grid-template-columns': `repeat(${tamano}, 1fr)` }">
@@ -80,6 +80,7 @@ export default {
     },
 
     siguienteNivel(){
+      this.vidas = 3
       this.cuadriculas = []
       this.nivel = this.nivel +1
       
