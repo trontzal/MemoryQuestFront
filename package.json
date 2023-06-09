@@ -18,8 +18,9 @@
     "chartjs": "^0.3.24",
     "chartjs-plugin-rough": "^0.2.0",
     "core-js": "^3.8.3",
+    "mixins": "^0.0.1",
     "vue": "^3.2.26",
-    "vue-chartjs": "^5.2.0",
+    "vue-chartjs": "^3.5.1",
     "vue-router": "^4.0.3"
   },
   "devDependencies": {
