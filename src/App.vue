@@ -1,11 +1,12 @@
-<template class="body">
+<template >
   <body>
     <NavBarComp/>
 
     <div class="flex">
-      <div class="sidebar">
+      {{ ampliado }}
+      <div class="sidebar" v-if="ampliado == false">
 
-        <router-link to="/" class="juegoEspecifico">         
+        <router-link to="/" class="juegoEspecifico" @enviarTamano="actualizarAmpliado">         
             <div class="imagenJuego">
               <img src="@/assets/imagenes/miniaturas/MemoriaVisual.png" alt="">
             </div>
@@ -86,7 +87,17 @@
     name: 'NavBar',
     components:{
       NavBarComp
-    }
+    },
+    data() {
+      return {
+        ampliado : true
+      }
+    },
+    methods: {
+          actualizarAmpliado(ampliado){
+            this.ampliado = ampliado
+          }
+        }
   }
 </script>
 
@@ -172,12 +183,13 @@
   .sidebar{
     display: flex;
     flex-direction: column;
-    width: 20%;
+    width: 25%;
     font-size: x-large;
   }
   
   .routerview{
-    width: 75%;
+    width: 100%;
+  
   }
  /*  Items del sidebar*/
   .juegoEspecifico{

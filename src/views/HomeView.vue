@@ -1,5 +1,10 @@
 <template>
   <div class="comp color2">
+    <div class="ampliarMinimizar">
+      <img src="../assets/imagenes/botones/Ampliar.png" alt="" @click="enviarTamano(true); ampliado = true" v-if="ampliado == false">
+      <img src="../assets/imagenes/botones/Minimizar.png" alt="" @click="enviarTamano(false); ampliado = false" v-else>
+    </div>
+
     <h2>Plantilla</h2>
     <div v-if="juegoIniciado == false" class="vistaInicial">
       <img src="../assets/imagenes/iconosGrandes/MemoriaVisual.png" alt="">
@@ -32,9 +37,16 @@ export default{
     return {
       empezar : true,
       juegoIniciado : false,
-      resultado : false
+      resultado : false,
+      ampliado : true
     }
   },
+  methods: {
+    enviarTamano(ampliado){
+      this.$emit('tamano', ampliado)
+      console.log(ampliado)
+    }
+  }
 }
 </script>
 
