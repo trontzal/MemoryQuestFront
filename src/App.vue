@@ -1,5 +1,5 @@
 <template >
-  <body>
+  <div class="body">
     <NavBarComp/>
 
     <div class="flex">
@@ -75,7 +75,7 @@
         derechos
       </div>
     </div> -->
-  </body>
+  </div>
 </template>
 
 <script>
@@ -144,7 +144,7 @@
     text-align: center;
   }
 
-  body{
+  .body{
     margin: 0 auto;
     width: 90%;
   }

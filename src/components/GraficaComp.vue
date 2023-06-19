@@ -1,12 +1,21 @@
 <template>
-  <div>
-    <h1>Media de puntuaciones</h1>
+
+  <div v-if="ensenar == true">
+    <div class="ponerGrid" @click="ensenar = false">
+      <div></div>
+      <h1>Media de puntuaciones</h1>
+      <img src="../assets/imagenes/botones/cerrar.png" alt="" >
+    </div>
     <div v-if="datosGrafico">
       <canvas ref="chartCanvas"></canvas>
     </div>
     <div v-else>
       Cargando...
     </div>
+  </div>
+
+  <div v-else class="minimizado ponerGrid" @click="refreshPage">
+    <div></div><h2>Grafico de medias</h2><img src="../assets/imagenes/botones/abrir.png" alt="" >
   </div>
 </template>
 
@@ -18,7 +27,8 @@ export default {
     return {
       datosGrafico: null,
       tipo_de_juego: "memoriaVisual",
-      chart: null // Agregamos una propiedad para guardar la instancia del gráfico
+      chart: null, // Agregamos una propiedad para guardar la instancia del gráfico
+      ensenar: true
     };
   },
   mounted() {
@@ -28,6 +38,9 @@ export default {
     this.renderChart();
   },
   methods: {
+    refreshPage() {
+      window.location.reload();
+    },
     renderChart() {
       const ctx = this.$refs.chartCanvas;
       if (ctx) {
@@ -80,5 +93,12 @@ export default {
 </script>
 
 
-
+<style>
+  .ponerGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-between;
+    align-items: center;
+  }
+</style>
 

@@ -1,23 +1,33 @@
 <template>
-  <div v-if="datosUsuario || datosJuego || posicionUsuario" class="ranking">
-    <h2>Ranking</h2>
-    <div class="posicionUsuario">
-      <p>Tu Posicion:</p>
-      <div v-if="datosUsuario">
-        {{ posicionUsuario }} {{ datosUsuario.usuario }} {{ datosUsuario.puntos }}
+  <div v-if="ensenar == true">
+    <div v-if="datosUsuario || datosJuego || posicionUsuario" class="ranking">
+      <div class="ponerGrid" @click="ensenar = false">
+        <div></div>
+        <h2>Ranking</h2>
+        <img src="../assets/imagenes/botones/cerrar.png" alt="" >
       </div>
-      <div v-else>
-        Cargando...
+      <div class="posicionUsuario">
+        <p>Tu Posicion:</p>
+        <div v-if="datosUsuario">
+          {{ posicionUsuario }} {{ datosUsuario.usuario }} {{ datosUsuario.puntos }}
+        </div>
+        <div v-else>
+          Cargando...
+        </div>
       </div>
-
+      <h2>Top5</h2>
+      <div v-for="(top, index) in top5" :key="index">
+          {{ index + 1 }} {{ top.usuario }}  {{ top.puntos }}  {{ top.tipo_de_juego }}
+      </div>
     </div>
-    <h2>Top5</h2>
-    <div v-for="(top, index) in top5" :key="index">
-        {{ index + 1 }} {{ top.usuario }}  {{ top.puntos }}  {{ top.tipo_de_juego }}
+    <div v-else class="cargando">
+      Cargando...
     </div>
   </div>
-  <div v-else class="cargando">
-    Cargando...
+  <div v-else class="ponerGrid" @click="ensenar = true">
+    <div></div>
+    <h2>Ranking</h2>
+    <img src="../assets/imagenes/botones/abrir.png" alt="" >
   </div>
 </template>
   
@@ -32,6 +42,7 @@
         usuario : "anonimo",
         tipo_de_juego : "memoriaVisual",
         posicionUsuario : null,
+        ensenar : true
       };
     },
     // computed para mejor eficiencia al manejar datos
