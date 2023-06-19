@@ -3,10 +3,9 @@
     <NavBarComp/>
 
     <div class="flex">
-      {{ ampliado }}
-      <div class="sidebar" v-if="ampliado == false">
+      <div class="sidebar">
 
-        <router-link to="/" class="juegoEspecifico" @enviarTamano="actualizarAmpliado">         
+        <router-link to="/" class="juegoEspecifico" >         
             <div class="imagenJuego">
               <img src="@/assets/imagenes/miniaturas/MemoriaVisual.png" alt="">
             </div>
@@ -33,33 +32,32 @@
             </div>        
         </router-link>
 
-        <router-link to="/" class="juegoEspecifico">         
+        <router-link to="/PlantillaEjemplo.vue" class="juegoEspecifico">         
+              <div class="imagenJuego">
+                <img src="@/assets/imagenes/miniaturas/MemoriaVisual.png" alt="">
+              </div>
+              <div class="nombreJuegoEspecifico">
+                Plantilla
+              </div>
+        </router-link>
+
+        <router-link to="/PlantillaEjemplo.vue" class="juegoEspecifico">         
             <div class="imagenJuego">
               <img src="@/assets/imagenes/miniaturas/MemoriaVisual.png" alt="">
             </div>
             <div class="nombreJuegoEspecifico">
-              Home
+              Plantilla
             </div>
         </router-link>
 
-        <router-link to="/" class="juegoEspecifico">         
-            <div class="imagenJuego">
-              <img src="@/assets/imagenes/miniaturas/MemoriaVisual.png" alt="">
-            </div>
-            <div class="nombreJuegoEspecifico">
-              Home
-            </div>
+        <router-link to="/PlantillaEjemplo.vue" class="juegoEspecifico">         
+              <div class="imagenJuego">
+                <img src="@/assets/imagenes/miniaturas/MemoriaVisual.png" alt="">
+              </div>
+              <div class="nombreJuegoEspecifico">
+                Plantilla
+              </div>
         </router-link>
-
-        <router-link to="/" class="juegoEspecifico">         
-            <div class="imagenJuego">
-              <img src="@/assets/imagenes/miniaturas/MemoriaVisual.png" alt="">
-            </div>
-            <div class="nombreJuegoEspecifico">
-              Home
-            </div>
-        </router-link>
-
       </div>
 
       <div class="routerview">
@@ -90,14 +88,10 @@
     },
     data() {
       return {
-        ampliado : true
       }
     },
     methods: {
-          actualizarAmpliado(ampliado){
-            this.ampliado = ampliado
-          }
-        }
+    }
   }
 </script>
 
