@@ -10,7 +10,7 @@
         Has llegado al nivel {{ nivel }}
       </div>
     </div>
-    <div v-if="juegoIniciado" class="juego">
+    <div v-if="juegoIniciado" class="juego">,y
       <div class="nivel-vidas">
         <h2 class="nivel">Nivel {{ nivel }}</h2>
         <div class="vidas">
