@@ -2,9 +2,10 @@
     <h1>Ejemplo de obetener datos de la db</h1>
     <div>
         <button @click="puntuaciones">Obtener</button>
-        <div v-for="dato in datos" :key="dato.id">
+        <!-- <div v-for="dato in datos" :key="dato.id">
             {{ dato }}
-        </div>
+        </div> -->
+        {{  datos }}
     </div>
 
     <h2>Recibir solo de un usuario</h2>

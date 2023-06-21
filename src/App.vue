@@ -113,6 +113,12 @@
     margin-top:0;
   }
 
+  .link{
+    border-bottom: solid 1px #551A8B;
+    color: #551A8B;
+    cursor: pointer;
+  }
+
   .color1{
     background-color: #4B5D5F ;
   }
@@ -129,6 +135,10 @@
     background-color: #4B5D5F;
     height: 2rem;
     width: 8rem;
+    color: white;
+    font-size: large;
+    display: block;
+    margin: 0 auto;
   }
 
   .comp{

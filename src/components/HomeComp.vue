@@ -1,7 +1,33 @@
 <template>
     <div class="color2 comp">
-        <div class="overlay">
-            Formulario
+        <div v-if="overlay == true" class="overlay">
+            <div class="formularioRegistro">
+        <img src="" alt="Imagen del formulario">
+        <form v-if="registrar == true">
+            <div>
+                <input type="text" id="username" name="username" placeholder="Usuario" required>
+            </div>
+            <div>
+                <input type="password" id="password" name="password" placeholder="Contraseña" required>
+            </div>
+            <div>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmar contraseña" required>
+            </div>
+            <button type="submit" class="btn">Registrarse</button>
+        </form>
+
+        <form v-if="iniciar == true">
+                <div>
+                    <input type="text" id="username" name="username" placeholder="Usuario" required>
+                </div>
+                <div>
+                    <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                </div>
+
+                <button type="submit" class="btn">Registrarse</button>
+            </form>
+    </div>
+
         </div>
         <div class="cuerpoHome">
             <h2>Memory Quest</h2>
@@ -16,15 +42,28 @@
             </div>
             <h3>Registrarse</h3>
             <div>
-                <p class="centrado">Se recomienda <a href="#">registrarse</a> o <a href="#">iniciar sesión</a> para reflejar tus puntuaciones en los rankings y ayudarme a hacer crecer la base de datos.¡Muchas gracias por tu colaboracion!</p>
+                <p class="centrado">Se recomienda <a @click="registrarse" class="link">registrarse</a> o <a @click="iniciarSesion" class="link">iniciar sesión</a> para reflejar tus puntuaciones en los rankings y ayudarme a hacer crecer la base de datos.¡Muchas gracias por tu colaboracion!</p>
             </div> 
         </div>
     </div>
 </template>
 
 <script>
+import { registerables } from 'chart.js'
     export default {
-        name : 'HomeDescripcion'
+        name : 'HomeDescripcion',
+        data() {
+            return {
+                overlay : false,
+                registrar : false,
+                iniciar : false
+            }
+        },
+        methods() {
+            registrarse(){
+                this.overlay = true
+            }
+        }
     }
 </script>
 
@@ -38,6 +77,8 @@
     top: 0;
     left: 0;
     }
+
+
 
     .cuerpoHome{
         width:80%;
@@ -57,4 +98,33 @@
     }
 
 
+</style>
+<style scoped>
+.formularioRegistro {
+    background-color: white;
+    margin: 0 auto;
+    width: 20rem;
+    height: auto;
+    margin-top: 10rem;
+    padding: 2rem;
+
+}
+
+.formularioRegistro > form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 1rem;
+}
+
+.formularioRegistro input[type="text"],
+.formularioRegistro input[type="password"] {
+    width: 80%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 1rem;
+    outline: none;
+}
 </style>
