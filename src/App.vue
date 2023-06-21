@@ -97,6 +97,22 @@
 
 <style>
 /* colores pricipales y elementos globales*/
+  h2{
+    font-size: 2.5rem;
+    margin: 0;
+    padding-top:3rem;
+    padding-bottom: 1.5rem;
+  }
+
+  h3{
+    font-size: 2rem;
+  }
+
+  p{
+    font-size:1.5rem;
+    margin-top:0;
+  }
+
   .color1{
     background-color: #4B5D5F ;
   }
@@ -116,8 +132,9 @@
   }
 
   .comp{
-    height: 37rem;
-    padding: 1.5rem;
+    height: auto;
+    padding-bottom: 5rem;
+    position: relative;
   }
 
   .vistaInicial{
