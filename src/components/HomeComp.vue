@@ -38,7 +38,7 @@
             </div>
             <h3>Nuestra Base de Datos</h3>
             <div class="flex izq">
-                <p>Memory Quest guarda las puntuaciones de todos los juegos que juegues. Esto nos permite crear graficos y rankings que reflejan tus logros y los de otros jugadores. Cuantas mas personas se unan, mas rica será nuestra base de datos y mas interesanres seran los rankings.</p>
+                <p>Memory Quest guarda las puntuaciones de todos los juegos que juegues. Esto nos permite crear graficos y rankings que reflejan tus logros y los de otros jugadores. Cuantas mas personas se unan, mas rica será nuestra base de datos y mas interesantes seran los rankings.</p>
                 <img src="../assets/imagenes/home/grafico.png" alt="">
             </div>
             <h3>Registrarse</h3>

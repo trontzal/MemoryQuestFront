@@ -132,6 +132,7 @@
     font-size: large;
     display: block;
     margin: 0 auto;
+    cursor: pointer;
   }
 
   .comp{
@@ -149,6 +150,9 @@
     margin: 0 0 1rem 0;
   }
 
+  .descripcion{
+    margin: 1.5rem 0 1.5rem 0;
+  }
   /* colores cuando la ruta esta seleccionada */
   .router-link-exact-active{
   background-color: #4B5D5F;

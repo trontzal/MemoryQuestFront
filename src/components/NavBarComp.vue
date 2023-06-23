@@ -1,7 +1,7 @@
 <template>
     <div class="header color1">
       <div></div>
-      <div class="logo">
+      <div class="divLogo">
         <router-link to="/" class="juegoEspecifico" >
           <img src="../assets/imagenes/logo/logopequeno.png" alt="" class="logoPequeno">
         </router-link>
@@ -22,7 +22,12 @@
 
 <script>
   export default{
-    name: 'NavBar'
+    name: 'NavBar',
+    data() {
+      return {
+        
+      }
+    },
   }
 </script>
 
@@ -46,10 +51,10 @@
   }
 
   .dropdowns > div > img{
-    width: 80%;
+    width: 70%;
   }
 
-  .logo{
+  .divLogo{
     display: flex;
     justify-content: center;
     align-items: center;
