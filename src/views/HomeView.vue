@@ -1,16 +1,16 @@
 <template>
 <HomeComp />
-<EjemploRecivirComp />
+<!-- <EjemploRecivirComp /> -->
 </template>
 
 <script>
-import EjemploRecivirComp from '@/components/EjemploRecivirComp.vue'; 
+// import EjemploRecivirComp from '@/components/EjemploRecivirComp.vue'; 
 import HomeComp from '../components/HomeComp.vue';
 
 export default{
   components:{
     HomeComp,
-    EjemploRecivirComp
+    // EjemploRecivirComp
   }
 }
 

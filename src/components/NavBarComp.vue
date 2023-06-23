@@ -1,7 +1,11 @@
 <template>
     <div class="header color1">
       <div></div>
-      <div class="logo"><img src="../assets/imagenes/logo/logopequeno.png" alt="" class="logoPequeno"></div>
+      <div class="logo">
+        <router-link to="/" class="juegoEspecifico" >
+          <img src="../assets/imagenes/logo/logopequeno.png" alt="" class="logoPequeno">
+        </router-link>
+      </div>
       <ul class="dropdowns">
         <li class="rank">
           <img src="../assets/imagenes/dropdowns/rank.png" alt="">

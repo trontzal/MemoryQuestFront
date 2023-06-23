@@ -64,27 +64,20 @@
         <router-view/>
       </div>
     </div>
-    <!-- <div class="footer">
-      <div class="redes">
-        iconos de redes
-      </div>
-      <div class="contacto">
-        email
-      </div>
-      <div class="derechos">
-        derechos
-      </div>
-    </div> -->
+
+    <FooterComp />
   </div>
 </template>
 
 <script>
   import NavBarComp from './components/NavBarComp.vue'
+  import FooterComp from './components/FooterComp.vue'
 
   export default{
     name: 'NavBar',
     components:{
-      NavBarComp
+      NavBarComp,
+      FooterComp
     },
     data() {
       return {
@@ -153,7 +146,7 @@
   }
 
   .vistaInicial > img{
-    margin: 2rem 0 1rem 0;
+    margin: 0 0 1rem 0;
   }
 
   /* colores cuando la ruta esta seleccionada */
@@ -241,10 +234,4 @@
     flex-grow: 1;
   }
 
-  /* footer */
-  .footer{
-    bottom: 0;
-    display: flex;
-    justify-content: space-around;
-  }
 </style>
