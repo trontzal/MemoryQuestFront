@@ -2,31 +2,32 @@
     <div class="color2 comp">
         <div v-if="overlay == true" class="overlay">
             <div class="formularioRegistro">
-        <img src="" alt="Imagen del formulario">
-        <form v-if="registrar == true">
-            <div>
-                <input type="text" id="username" name="username" placeholder="Usuario" required>
-            </div>
-            <div>
-                <input type="password" id="password" name="password" placeholder="Contraseña" required>
-            </div>
-            <div>
-                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmar contraseña" required>
-            </div>
-            <button type="submit" class="btn">Registrarse</button>
-        </form>
+                <span class="cerrarFormulario" @click="formulario('cerrar')">&times;</span><br>
+                <img src="../assets/imagenes/logo/logoGrande.png" alt="Imagen del formulario" class="imgFormulario">
+                <form v-if="registro == true">
+                    <div>
+                        <input type="text" id="username" name="username" placeholder="Usuario" required>
+                    </div>
+                    <div>
+                        <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                    </div>
+                    <div>
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmar contraseña" required>
+                    </div>
+                    <button type="submit" class="btn">Registrarse</button>
+                </form>
 
-        <form v-if="iniciar == true">
-                <div>
-                    <input type="text" id="username" name="username" placeholder="Usuario" required>
-                </div>
-                <div>
-                    <input type="password" id="password" name="password" placeholder="Contraseña" required>
-                </div>
+                <form v-if="inicio == true">
+                    <div>
+                        <input type="text" id="username" name="username" placeholder="Usuario" required>
+                    </div>
+                    <div>
+                        <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                    </div>
 
-                <button type="submit" class="btn">Registrarse</button>
-            </form>
-    </div>
+                    <button type="submit" class="btn">Iniciar sesión</button>
+                </form>
+            </div>
 
         </div>
         <div class="cuerpoHome">
@@ -42,26 +43,44 @@
             </div>
             <h3>Registrarse</h3>
             <div>
-                <p class="centrado">Se recomienda <a @click="registrarse" class="link">registrarse</a> o <a @click="iniciarSesion" class="link">iniciar sesión</a> para reflejar tus puntuaciones en los rankings y ayudarme a hacer crecer la base de datos.¡Muchas gracias por tu colaboracion!</p>
+                <p class="centrado">Se recomienda <a @click="formulario('registro')" class="link">registrarse</a> o <a @click="formulario('inicio')" class="link">iniciar sesión</a> para reflejar tus puntuaciones en los rankings y ayudarme a hacer crecer la base de datos.¡Muchas gracias por tu colaboracion!</p>
             </div> 
         </div>
     </div>
 </template>
 
 <script>
-import { registerables } from 'chart.js'
+
     export default {
         name : 'HomeDescripcion',
         data() {
             return {
                 overlay : false,
-                registrar : false,
-                iniciar : false
+                registro : false,
+                inicio : false
             }
         },
-        methods() {
-            registrarse(){
-                this.overlay = true
+        methods:{
+            formulario(tipo){
+                if (tipo === 'registro'){
+                    window.scrollTo({
+                        top: 200,
+                        behavior: 'smooth'
+                    })
+                    this.overlay = true;
+                    this.registro = true;
+                }else if (tipo === 'inicio'){
+                    this.overlay = true;
+                    this.inicio = true;
+                     window.scrollTo({
+                        top: 180,
+                        behavior: 'smooth'
+                    })
+                }else if (tipo === 'cerrar'){
+                    this.overlay = false;
+                    this.registro = false;
+                    this.inicio = false;
+                }
             }
         }
     }
@@ -97,34 +116,44 @@ import { registerables } from 'chart.js'
         gap: 8rem;
     }
 
+    .imgFormulario{
+        width: 15rem;
+        margin-bottom: 2rem;
+    }
 
-</style>
-<style scoped>
-.formularioRegistro {
+    .cerrarFormulario{
+        display: flex;
+        justify-content: end;
+        font-size: 2.5rem;
+        cursor: pointer;
+    }
+
+    .formularioRegistro {
     background-color: white;
     margin: 0 auto;
     width: 20rem;
     height: auto;
     margin-top: 10rem;
-    padding: 2rem;
+    padding: 0.5rem 2rem 2.5rem 2rem;
+    }
 
-}
+    .formularioRegistro > form{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding-top: 1rem;
+    }
 
-.formularioRegistro > form{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding-top: 1rem;
-}
+    .formularioRegistro input[type="text"],
+    .formularioRegistro input[type="password"] {
+        width: 80%;
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: none;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 1rem;
+        outline: none;
+    }
 
-.formularioRegistro input[type="text"],
-.formularioRegistro input[type="password"] {
-    width: 80%;
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: none;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 1rem;
-    outline: none;
-}
+
 </style>

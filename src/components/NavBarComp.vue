@@ -1,7 +1,7 @@
 <template>
     <div class="header color1">
       <div></div>
-      <h2>Logo</h2>
+      <div class="logo"><img src="../assets/imagenes/logo/logopequeno.png" alt="" class="logoPequeno"></div>
       <ul class="dropdowns">
         <li class="rank">
           <img src="../assets/imagenes/dropdowns/rank.png" alt="">
@@ -43,5 +43,17 @@
 
   .dropdowns > div > img{
     width: 80%;
+  }
+
+  .logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logoPequeno{
+    width: 15rem;
+    height: 4rem;
+
   }
 </style>
