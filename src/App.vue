@@ -1,6 +1,6 @@
 <template >
   <div class="body">
-    <NavBarComp/>
+    <NavBarComp :oculto="oculto"/>
 
     <div class="flex">
       <div class="sidebar" v-show="oculto == false">

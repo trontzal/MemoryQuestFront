@@ -1,7 +1,7 @@
 <template>
     <div class="header color1">
-      <div>
-        <select v-model="selectedOption" @change="navigateToGame">
+      <div class="navSelect">
+        <select v-show="oculto == true" v-model="selectedOption" @change="navigateToGame">
           <option v-for="route in routes" :key="route.path" :value="route.path">{{ route.name }}</option>
         </select>
       </div>
@@ -29,6 +29,7 @@
 <script>
   export default{
     name: 'NavBar',
+    props:['oculto'],
     data() {
       return {
         selectedOption: '',
@@ -61,7 +62,7 @@
   li{
     list-style: none;
   }
-  
+
   .header{
     display: grid;
     grid-template-columns:repeat(3, 1fr);
@@ -92,4 +93,22 @@
     height: 4rem;
 
   }
+
+  .navSelect{
+    display: flex;
+    justify-content: initial;
+    align-items: center;
+  }
+
+  select{
+    height: 3rem;
+    margin-left: 2rem;
+    width: 14rem;
+    font-size: 18px;
+  }
+
+  select option {
+  font-size: 16px; /* Ajusta el tamaño de fuente según tu preferencia */
+  }
+
 </style>
