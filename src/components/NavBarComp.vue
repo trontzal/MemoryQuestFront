@@ -37,6 +37,7 @@
           { path: '/', name: 'Home' },
           { path: '/MemoriaVisual', name: 'MemoriaVisual' },
           { path: '/PlantillaEjemplo.vue', name: 'PlantillaView' },
+          { path: '/JuegoReflejos.vue', name: 'ReflejosView' },
         ]
       };
     },

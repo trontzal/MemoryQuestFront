@@ -25,6 +25,15 @@
             </div>        
         </router-link>
 
+        <router-link to="/JuegoReflejos.vue" class="juegoEspecifico">         
+            <div class="imagenJuego">
+              <img src="@/assets/imagenes/miniaturas/MemoriaVisual.png" alt="">
+            </div>
+            <div class="nombreJuegoEspecifico">
+              Reflejos
+            </div>
+        </router-link>
+
 
         <router-link to="/PlantillaEjemplo.vue" class="juegoEspecifico">         
               <div class="imagenJuego">
@@ -166,6 +175,11 @@
     margin:0;
     cursor: pointer;
     width: fit-content;
+  }
+
+  .ocultar > p:hover{
+    color: blue;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }
 </style>
 
