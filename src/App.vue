@@ -3,8 +3,10 @@
     <NavBarComp/>
 
     <div class="flex">
-      <div class="sidebar">
-
+      <div class="sidebar" v-show="oculto == false">
+        <div class="ocultar">
+          <p @click="oculto = true">Ocultar sidebar</p>
+        </div>
         <router-link to="/" class="juegoEspecifico" >         
             <div class="imagenJuego">
               <img src="@/assets/imagenes/miniaturas/MemoriaVisual.png" alt="">
@@ -23,14 +25,6 @@
             </div>        
         </router-link>
 
-        <router-link to="/JuegoCartas.vue" class="juegoEspecifico">        
-            <div class="imagenJuego">
-              <img src="@/assets/imagenes/miniaturas/MemoriaVisual.png" alt="">
-            </div>
-            <div class="nombreJuegoEspecifico">
-              Cartas
-            </div>        
-        </router-link>
 
         <router-link to="/PlantillaEjemplo.vue" class="juegoEspecifico">         
               <div class="imagenJuego">
@@ -81,6 +75,7 @@
     },
     data() {
       return {
+        oculto : false,
       }
     },
     methods: {
@@ -139,11 +134,13 @@
     height: auto;
     padding-bottom: 5rem;
     position: relative;
+    padding-bottom: 10rem;
   }
 
   .vistaInicial{
     width: 70%;
     margin:0 auto;
+    margin-bottom: 4rem;
   }
 
   .vistaInicial > img{
@@ -157,7 +154,19 @@
   .router-link-exact-active{
   background-color: #4B5D5F;
   color: white;
-}
+  }
+
+  .ocultar{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .ocultar > p{
+    margin:0;
+    cursor: pointer;
+    width: fit-content;
+  }
 </style>
 
 
@@ -203,6 +212,7 @@
     flex-direction: column;
     width: 25%;
     font-size: x-large;
+    height: min-content;
   }
   
   .routerview{

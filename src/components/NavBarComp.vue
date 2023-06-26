@@ -1,11 +1,17 @@
 <template>
     <div class="header color1">
-      <div></div>
+      <div>
+        <select v-model="selectedOption" @change="navigateToGame">
+          <option v-for="route in routes" :key="route.path" :value="route.path">{{ route.name }}</option>
+        </select>
+      </div>
+
       <div class="divLogo">
         <router-link to="/" class="juegoEspecifico" >
           <img src="../assets/imagenes/logo/logopequeno.png" alt="" class="logoPequeno">
         </router-link>
       </div>
+
       <ul class="dropdowns">
         <li class="rank">
           <img src="../assets/imagenes/dropdowns/rank.png" alt="">
@@ -25,16 +31,37 @@
     name: 'NavBar',
     data() {
       return {
-        
+        selectedOption: '',
+        routes: [
+          { path: '/', name: 'Home' },
+          { path: '/MemoriaVisual', name: 'MemoriaVisual' },
+          { path: '/PlantillaEjemplo.vue', name: 'PlantillaView' },
+        ]
+      };
+    },
+    created() {
+    this.selectedOption = this.$route.path;
+    },
+    watch: {
+      '$route.path': function (newPath) {
+        this.selectedOption = newPath;
       }
     },
-  }
+    methods: {
+      navigateToGame() {
+        this.$router.push(this.selectedOption);
+      }
+    }
+  };
 </script>
 
 <style>
+
+  
   li{
     list-style: none;
   }
+  
   .header{
     display: grid;
     grid-template-columns:repeat(3, 1fr);

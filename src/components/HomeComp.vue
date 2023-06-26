@@ -113,7 +113,7 @@
 
     .flex{
         display: flex;
-        gap: 8rem;
+        gap: 4rem;
     }
 
     .imgFormulario{
