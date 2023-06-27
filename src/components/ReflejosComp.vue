@@ -7,13 +7,14 @@
                 <p>En el juego de Reflejos Rápidos, tu objetivo es hacer clic lo más rápido posible cuando la pantalla se ilumine en verde, evitando hacer clic cuando se ilumine en naranja. Pon a prueba tus reflejos y consigue la mejor puntuación evitando los colores equivocados.</p>
             </div>
             <div v-if="resultado" class="resultado">
-                Aqui sale el resultado al terminar el juego
+                <p>Aquí sale el resultado al terminar el juego</p>
+                <p>Tiempo total: {{ tiempoTotal }} ms</p>
             </div>
         </div>
         <div v-if="juegoIniciado" class="juego">
             <div>
                 <div v-if="juegoIniciado2 == true" :class="juegoIniciado2">
-                    <div v-if="verde ==true" class="verde" @click="esVerde">
+                    <div v-if="verde ==true" class="verde" @click="acierto = true">
                         
                     </div>
                     <div v-if="naranja" class="naranja">
@@ -47,6 +48,7 @@ export default {
             juegoIniciado2: false,
             verde: false,
             naranja: false,
+            acierto: false,
         }
     },
     methods: {
@@ -61,16 +63,27 @@ export default {
             this.naranja = aleatorio >= 0.5;
 
             if (this.naranja) {
-                setTimeout(() => {
-                    this.naranja = false;
-                    setTimeout(() => {
-                        this.generarColores();
-                    }, 2000 + Math.random() * 5000); // Tiempo aleatorio en milisegundos
-                }, 2000);
-            } else{
-                
+                this.esNaranja()
+            }else {
+                this.esVerde()
             }
         },
+
+        esNaranja(){
+            setTimeout(() => {
+                this.naranja = false;
+                setTimeout(() => {
+                    this.generarColores();
+                }, 2000 + Math.random() * 5000); // Tiempo aleatorio en milisegundos
+            }, 2000);
+        },
+
+        esVerde() {
+            if (this.acierto) {
+                window.alert('¡Correcto! Hiciste clic en el color verde.');
+            }
+        },
+
 
     }
 }
