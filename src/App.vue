@@ -110,6 +110,14 @@
     margin-top:0;
   }
 
+  a{
+    text-decoration: none;
+  }
+
+  a:hover{
+    color: rgb(27, 84, 206);
+  }
+
   .link{
     border-bottom: solid 1px #551A8B;
     color: #551A8B;

@@ -79,7 +79,7 @@
     margin-right: 3rem;
   }
 
-  .dropdowns > div > img{
+  .dropdowns > li > img{
     width: 70%;
   }
 
