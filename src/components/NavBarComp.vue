@@ -12,7 +12,8 @@
         </router-link>
       </div>
 
-      <ul class="dropdowns">
+      <DropdownsComp />
+      <!-- <ul class="dropdowns">
         <li class="rank">
           <img src="../assets/imagenes/dropdowns/rank.png" alt="">
         </li>
@@ -22,13 +23,18 @@
         <li class="ajustes">
           <img src="../assets/imagenes/dropdowns/ajustes.png" alt="">
         </li>
-      </ul>
+      </ul> -->
     </div>
 </template>
 
 <script>
+  import DropdownsComp from './DropdownsComp.vue';
+
   export default{
     name: 'NavBar',
+    components:{
+      DropdownsComp
+    },
     props:['oculto'],
     data() {
       return {
