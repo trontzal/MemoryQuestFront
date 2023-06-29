@@ -111,10 +111,7 @@
 
     }
 
-    .flex{
-        display: flex;
-        gap: 4rem;
-    }
+
 
     .imgFormulario{
         width: 15rem;
@@ -156,4 +153,11 @@
     }
 
 
+</style>
+
+<style scoped>
+    .flex{
+        display: flex;
+        gap: 4rem;
+    }
 </style>

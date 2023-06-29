@@ -3,7 +3,7 @@
     <NavBarComp :oculto="oculto"/>
 
     <div class="flex">
-      <div class="sidebar" v-show="oculto == false">
+      <div class="sidebar" :class="{ 'sidebar-hidden': oculto }">
         <div class="ocultar">
           <p @click="oculto = true">Ocultar sidebar</p>
         </div>
@@ -62,6 +62,7 @@
               </div>
         </router-link>
       </div>
+
 
       <div class="routerview">
         <router-view/>
@@ -189,6 +190,8 @@
     color: blue;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }
+
+  
 </style>
 
 
@@ -225,7 +228,7 @@
   
   .flex{
     display: flex;
-    gap: 2rem;
+
   }
 
 
@@ -235,6 +238,16 @@
     width: 25%;
     font-size: x-large;
     height: min-content;
+    transition: transform 0.3s ease , opacity 0.3s ease , width 0.3s ease;
+    margin-right: 2rem;
+  }
+
+  .sidebar-hidden {
+  /* Estilos cuando el sidebar está oculto */
+  transform: translateX(-100%);
+  opacity: 0;
+  width: 0;
+  margin-right: 0;
   }
   
   .routerview{
