@@ -84,14 +84,41 @@ export default {
         this.inicio = false;
       }
     },
+    
     registrarUsuario() {
         if (this.contrasenaRegistro !== this.confirmarContrasenaRegistro){
             alert("Las contraseññas no coinciden")
-        }else{
-            alert("Las contraseññas coinciden ")
+            return;
         }
+        this.enviarUsuario();
+      },
+
+      async enviarUsuario() {
+        const url = "http://127.0.0.1:5000/usuarios";
+        const data = {
+          id_usuario: "frontEscrito",
+          contraseña: "123"
+        };
+
+        try {
+          const response = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+          });
+
+          if (response.ok) {
+            console.log("Usuario creado exitosamente");
+          } else {
+            console.error("Error al crear usuario:", response.status);
+          }
+        } catch (error) {
+          console.error("Error al realizar la solicitud:", error);
+        }
+      }
+
     }
-}
+  }
 </script>
 
 
