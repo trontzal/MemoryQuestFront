@@ -6,7 +6,7 @@
         <img src="../assets/imagenes/logo/logoGrande.png" alt="Imagen del formulario" class="imgFormulario">
         <form v-if="registro == true" @submit.prevent="registrarUsuario">
           <div>
-            <input type="text" id="username" name="usuario" placeholder="Usuario" required v-model="usuario">
+            <input type="text" id="username" name="usuario" placeholder="Usuario" required v-model="usuarioRegistro">
           </div>
           <div>
             <input type="password" id="contrasena" name="contrasenaRegistro" placeholder="Contraseña" required v-model="contrasenaRegistro">
@@ -57,7 +57,7 @@ export default {
         overlay: false,
         registro: false,
         inicio: false,
-        usuario: '',
+        usuarioRegistro: '',
         contrasenaRegistro: '',
         confirmarContrasenaRegistro: ''
     }
@@ -96,10 +96,10 @@ export default {
       async enviarUsuario() {
         const url = "http://127.0.0.1:5000/usuarios";
         const data = {
-          id_usuario: "frontEscrito",
-          contraseña: "123"
+          id_usuario: this.usuarioRegistro,
+          contraseña: this.contrasenaRegistro
         };
-
+        console.log(data);
         try {
           const response = await fetch(url, {
             method: "POST",
@@ -108,7 +108,8 @@ export default {
           });
 
           if (response.ok) {
-            console.log("Usuario creado exitosamente");
+            alert("Usuario creado exitosamente");
+            this.formulario('cerrar')
           } else {
             console.error("Error al crear usuario:", response.status);
           }
