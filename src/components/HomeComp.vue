@@ -1,126 +1,152 @@
-<template>
-  <div class="color2 comp">
-    <div v-if="overlay == true" class="overlay">
-      <div class="formularioRegistro">
-        <span class="cerrarFormulario" @click="formulario('cerrar')">&times;</span><br>
-        <img src="../assets/imagenes/logo/logoGrande.png" alt="Imagen del formulario" class="imgFormulario">
-        <form v-if="registro == true" @submit.prevent="registrarUsuario">
-          <div>
-            <input type="text" id="username" name="usuario" placeholder="Usuario" required v-model="usuarioRegistro">
-          </div>
-          <div>
-            <input type="password" id="contrasena" name="contrasenaRegistro" placeholder="Contraseña" required v-model="contrasenaRegistro">
-          </div>
-          <div>
-            <input type="password" id="confirm-password" name="confirmarContrasenaRegistro" placeholder="Confirmar contraseña" required v-model="confirmarContrasenaRegistro">
-          </div>
-          <button type="submit" class="btn">Registrarse</button>
-        </form>
+  <template>
+    <div class="color2 comp">
+      <div v-if="overlay == true" class="overlay">
+        <div class="formularioRegistro">
+          <span class="cerrarFormulario" @click="formulario('cerrar')">&times;</span><br>
+          <img src="../assets/imagenes/logo/logoGrande.png" alt="Imagen del formulario" class="imgFormulario">
+          <form v-if="registro == true" @submit.prevent="registrarUsuario">
+            <div>
+              <input type="text" id="username" name="usuario" placeholder="Usuario" required v-model="usuarioRegistro">
+            </div>
+            <div>
+              <input type="password" id="contrasena" name="contrasenaRegistro" placeholder="Contraseña" required v-model="contrasenaRegistro">
+            </div>
+            <div>
+              <input type="password" id="confirm-password" name="confirmarContrasenaRegistro" placeholder="Confirmar contraseña" required v-model="confirmarContrasenaRegistro">
+            </div>
+            <button type="submit" class="btn">Registrarse</button>
+          </form>
 
-        <form v-if="inicio == true">
-          <div>
-            <input type="text" id="username" name="usuario" placeholder="Usuario" required>
-          </div>
-          <div>
-            <input type="password" id="password" name="contrasena" placeholder="Contraseña" required>
-          </div>
+          <form v-if="inicio == true" @submit.prevent="iniciarSesion">
+            <div>
+              <input type="text" id="username" name="usuario" placeholder="Usuario" required v-model="usuarioInicio">
+            </div>
+            <div>
+              <input type="password" id="password" name="contrasena" placeholder="Contraseña" required v-model="contrasenaInicio">
+            </div>
 
-          <button type="submit" class="btn">Iniciar sesión</button>
-        </form>
+            <button type="submit" class="btn">Iniciar sesión</button>
+          </form>
+        </div>
+
       </div>
-
+      <div class="cuerpoHome">
+        <h2>Memory Quest</h2>
+        <div class="flex izq">
+          <img src="../assets/imagenes/home/cerebro.png" alt="">
+          <p>Bienvenidos a Memory Quest, una página de juegos cognitivos y de memoria. Como mi proyecto personal, he creado esta plataforma con el objetivo de crear desafios mentales divertidos y estimulantes.</p>
+        </div>
+        <h3>Nuestra Base de Datos</h3>
+        <div class="flex izq">
+          <p>Memory Quest guarda las puntuaciones de todos los juegos que juegues. Esto nos permite crear graficos y rankings que reflejan tus logros y los de otros jugadores. Cuantas mas personas se unan, mas rica será nuestra base de datos y mas interesantes seran los rankings.</p>
+          <img src="../assets/imagenes/home/grafico.png" alt="">
+        </div>
+        <h3>Registrarse</h3>
+        <div>
+          <p class="centrado">Se recomienda <a @click="formulario('registro')" class="link">registrarse</a> o <a @click="formulario('inicio')" class="link">iniciar sesión</a> para reflejar tus puntuaciones en los rankings y ayudarme a hacer crecer la base de datos.¡Muchas gracias por tu colaboracion!</p>
+        </div> 
+      </div>
     </div>
-    <div class="cuerpoHome">
-      <h2>Memory Quest</h2>
-      <div class="flex izq">
-        <img src="../assets/imagenes/home/cerebro.png" alt="">
-        <p>Bienvenidos a Memory Quest, una página de juegos cognitivos y de memoria. Como mi proyecto personal, he creado esta plataforma con el objetivo de crear desafios mentales divertidos y estimulantes.</p>
-      </div>
-      <h3>Nuestra Base de Datos</h3>
-      <div class="flex izq">
-        <p>Memory Quest guarda las puntuaciones de todos los juegos que juegues. Esto nos permite crear graficos y rankings que reflejan tus logros y los de otros jugadores. Cuantas mas personas se unan, mas rica será nuestra base de datos y mas interesantes seran los rankings.</p>
-        <img src="../assets/imagenes/home/grafico.png" alt="">
-      </div>
-      <h3>Registrarse</h3>
-      <div>
-        <p class="centrado">Se recomienda <a @click="formulario('registro')" class="link">registrarse</a> o <a @click="formulario('inicio')" class="link">iniciar sesión</a> para reflejar tus puntuaciones en los rankings y ayudarme a hacer crecer la base de datos.¡Muchas gracias por tu colaboracion!</p>
-      </div> 
-    </div>
-  </div>
-</template>
+  </template>
 
-<script>
-export default {
-  name: 'HomeDescripcion',
-  data() {
-      return {
-        overlay: false,
-        registro: false,
-        inicio: false,
-        usuarioRegistro: '',
-        contrasenaRegistro: '',
-        confirmarContrasenaRegistro: ''
-    }
-  },
-  methods: {
-    formulario(tipo) {
-      if (tipo === 'registro') {
-        window.scrollTo({
-          top: 200,
-          behavior: 'smooth'
-        })
-        this.overlay = true;
-        this.registro = true;
-      } else if (tipo === 'inicio') {
-        this.overlay = true;
-        this.inicio = true;
-        window.scrollTo({
-          top: 180,
-          behavior: 'smooth'
-        })
-      } else if (tipo === 'cerrar') {
-        this.overlay = false;
-        this.registro = false;
-        this.inicio = false;
+  <script>
+  export default {
+    name: 'HomeDescripcion',
+    data() {
+        return {
+          overlay: false,
+          registro: false,
+          inicio: false,
+          usuarioRegistro: '',
+          contrasenaRegistro: '',
+          confirmarContrasenaRegistro: '',
+          usuarioInicio: '',
+          contrasenaInicio: ''
       }
     },
-    
-    registrarUsuario() {
-        if (this.contrasenaRegistro !== this.confirmarContrasenaRegistro){
-            alert("Las contraseññas no coinciden")
-            return;
+    methods: {
+      formulario(tipo) {
+        if (tipo === 'registro') {
+          window.scrollTo({
+            top: 200,
+            behavior: 'smooth'
+          })
+          this.overlay = true;
+          this.registro = true;
+        } else if (tipo === 'inicio') {
+          this.overlay = true;
+          this.inicio = true;
+          window.scrollTo({
+            top: 180,
+            behavior: 'smooth'
+          })
+        } else if (tipo === 'cerrar') {
+          this.overlay = false;
+          this.registro = false;
+          this.inicio = false;
         }
-        this.enviarUsuario();
       },
-
-      async enviarUsuario() {
-        const url = "http://127.0.0.1:5000/usuarios";
-        const data = {
-          id_usuario: this.usuarioRegistro,
-          contraseña: this.contrasenaRegistro
-        };
-        console.log(data);
-        try {
-          const response = await fetch(url, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data)
-          });
-
-          if (response.ok) {
-            alert("Usuario creado exitosamente");
-            this.formulario('cerrar')
-          } else {
-            console.error("Error al crear usuario:", response.status);
+      
+      registrarUsuario() {
+          if (this.contrasenaRegistro !== this.confirmarContrasenaRegistro){
+              alert("Las contraseññas no coinciden")
+              return;
           }
-        } catch (error) {
-          console.error("Error al realizar la solicitud:", error);
-        }
-      }
+          this.enviarUsuario();
+        },
 
+        async enviarUsuario() {
+          const url = "http://127.0.0.1:5000/usuarios";
+          const data = {
+            id_usuario: this.usuarioRegistro,
+            contraseña: this.contrasenaRegistro
+          };
+          try {
+            const response = await fetch(url, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(data)
+            });
+            if (response.ok) {
+              alert("Usuario creado exitosamente");
+              this.formulario('cerrar')
+            } else {
+              console.error("Error al crear usuario:", response.status);
+            }
+          } catch (error) {
+            console.error("Error al realizar la solicitud:", error);
+          }
+        },
+        async iniciarSesion(){
+          try{
+            console.log("empezando");
+            const response = await fetch("http://127.0.0.1:5000/login",{
+              method: "POST",
+              headers:{
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                id_usuario: this.usuarioInicio,
+                contraseña: this.contrasenaInicio
+              }),
+            });
+            if (response.ok) {
+              const data = await response.json();
+              console.log(data);
+              alert("Inicio de sesión exitoso");
+            } else if (response.status === 401) {
+              const errorData = await response.json();
+              alert(errorData.error);
+            } else {
+              alert("Error al iniciar sesión");
+            }
+          } catch (error) {
+            console.error('Error al realizar la solicitud:', error);
+          }
+        }
+      } 
     }
-  }
-</script>
+  </script>
 
 
 <style>
