@@ -134,6 +134,12 @@
               const data = await response.json();
               console.log(data);
               alert("Inicio de sesión exitoso");
+              this.formulario('cerrar')
+
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('username', this.usuarioInicio);
+                window.location.reload();
+                
             } else if (response.status === 401) {
               const errorData = await response.json();
               alert(errorData.error);

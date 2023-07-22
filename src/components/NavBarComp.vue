@@ -13,17 +13,6 @@
       </div>
 
       <DropdownsComp />
-      <!-- <ul class="dropdowns">
-        <li class="rank">
-          <img src="../assets/imagenes/dropdowns/rank.png" alt="">
-        </li>
-        <li class="perfil">
-          <img src="../assets/imagenes/dropdowns/perfil.png" alt="">
-        </li>
-        <li class="ajustes">
-          <img src="../assets/imagenes/dropdowns/ajustes.png" alt="">
-        </li>
-      </ul> -->
     </div>
 </template>
 

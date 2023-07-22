@@ -1,15 +1,19 @@
 <template>
     <nav>
         <div class="menu-item"><a href="#">Ranking</a></div>
-        <div class="menu-item"><a href="#">Perfil</a></div>
         <div class="menu-item"><a href="#">Ajustes</a></div>
+        <div v-if="estaAutenticado()" class="menu-item"><a href="">Hola {{ obtenerUsuario() }}</a></div>
+        
     </nav>
 </template>
 
 <script>
+    import { estaAutenticado, obtenerUsuario } from '@/auth';
     export default{
         name: "DropdowsnComp",
-        data() {
+        methods:{
+            estaAutenticado,
+            obtenerUsuario
         }
     }
 </script>
