@@ -26,7 +26,7 @@ export default {
   data() {
     return {
       datosGrafico: null,
-      tipo_de_juego: "memoriaVisual",
+      tipo_de_juego: "vis",
       chart: null, // Agregamos una propiedad para guardar la instancia del gráfico
       ensenar: true
     };
@@ -78,7 +78,7 @@ export default {
       }
     },
     async recibirDatosGrafico() {
-      const url = "http://127.0.0.1:5000/todo/grafico/" + this.tipo_de_juego;
+      const url = "http://127.0.0.1:5000/grafico/" + this.tipo_de_juego;
       try {
         const response = await fetch(url);
         const data = await response.json();
