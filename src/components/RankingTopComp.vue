@@ -40,7 +40,7 @@
         datosUsuario: null,
         datosJuego: null,
         usuario : "anonimo",
-        tipo_de_juego : "memoriaVisual",
+        tipo_de_juego : "vis",
         posicionUsuario : null,
         ensenar : true
       };
@@ -61,7 +61,7 @@
   
     methods: {
       async recibirDbDeJuegoEspecifico() {
-        const url = "http://127.0.0.1:5000/todo/game/" + this.tipo_de_juego;
+        const url = "http://127.0.0.1:5000/puntuaciones/vis"
         try {
           const response = await fetch(url);
           const data = await response.json();
@@ -70,37 +70,37 @@
           console.error(error);
         }
       },
-      async recibirDbDeUsuario() {
-        const url = "http://127.0.0.1:5000/todo/user/" + this.usuario;
-        try {
-          const response = await fetch(url);
-          const data = await response.json();
-          // Filtrar el dato de mayor puntuación del usuario
-          const maxPuntos = Math.max(...data.map((item) => item.puntos));
-          this.datosUsuario = data.find((item) => item.puntos === maxPuntos);
-        } catch (error) {
-          console.error(error);
-        }
-      },
-      async recibirDbDePosicionUsuario() {
-        const url = "http://127.0.0.1:5000/todo/posicion/" + this.usuario + "/" + this.tipo_de_juego;
-        try {
-          const response = await fetch(url);
-          const data = await response.json();
-          this.posicionUsuario = data;
-          console.log("****************" + this.posicionUsuario);
-        } catch (error) {
-          console.error(error + "******************");
-        }
-      }
+      // async recibirDbDeUsuario() {
+      //   const url = "http://127.0.0.1:5000/todo/user/" + this.usuario;
+      //   try {
+      //     const response = await fetch(url);
+      //     const data = await response.json();
+      //     // Filtrar el dato de mayor puntuación del usuario
+      //     const maxPuntos = Math.max(...data.map((item) => item.puntos));
+      //     this.datosUsuario = data.find((item) => item.puntos === maxPuntos);
+      //   } catch (error) {
+      //     console.error(error);
+      //   }
+      // },
+      // async recibirDbDePosicionUsuario() {
+      //   const url = "http://127.0.0.1:5000/todo/posicion/" + this.usuario + "/" + this.tipo_de_juego;
+      //   try {
+      //     const response = await fetch(url);
+      //     const data = await response.json();
+      //     this.posicionUsuario = data;
+      //     console.log("****************" + this.posicionUsuario);
+      //   } catch (error) {
+      //     console.error(error + "******************");
+      //   }
+      // }
       
 
     },
   
     mounted() {
       this.recibirDbDeJuegoEspecifico();
-      this.recibirDbDeUsuario();
-      this.recibirDbDePosicionUsuario();
+      // this.recibirDbDeUsuario();
+      // this.recibirDbDePosicionUsuario();
     }
   };
   </script>
