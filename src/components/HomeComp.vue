@@ -110,7 +110,9 @@
             if (response.ok) {
               alert("Usuario creado exitosamente");
               this.formulario('cerrar')
-            } else {
+            } else if (response.status === 409){
+              alert("El usuario ya existe");
+            }else {
               console.error("Error al crear usuario:", response.status);
             }
           } catch (error) {

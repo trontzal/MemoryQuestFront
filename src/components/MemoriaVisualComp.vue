@@ -30,7 +30,7 @@
 </template>
 
 <script>
-
+import {guardarPuntos} from '@/api'
 export default {
   name: 'MemoriaVisual',
   data() {
@@ -152,7 +152,7 @@ export default {
               this.resultado = true
               this.empezar = true
               this.resultados = this.nivel
-              this.guardarPuntos(this.resultados)
+              guardarPuntos(this.resultados, "vis")
             // reiniciamos las clases de las cuadriculas
               this.cuadriculas.forEach((cuadricula, index) => {
                 cuadricula.class = `cuadricula${index}`
@@ -168,18 +168,19 @@ export default {
         return
       }
     },
+    
 
-    async guardarPuntos(resultados){
-      const url = "http://127.0.0.1:5000/todo"
-      await fetch(url, {
-        method: "POST",
-        headers: {'Content-Type': 'application/json'},
-        body: `{"usuario":"prueba", "puntos":"${resultados}", "tipo_de_juego":"memoriaVisual"}`
-      })
-      .catch((e) => {
-        console.log("**************** Error: ", e)
-      })
-    }
+    // async guardarPuntos(resultados){
+    //   const url = "http://127.0.0.1:5000/todo"
+    //   await fetch(url, {
+    //     method: "POST",
+    //     headers: {'Content-Type': 'application/json'},
+    //     body: `{"usuario":"prueba", "puntos":"${resultados}", "tipo_de_juego":"memoriaVisual"}`
+    //   })
+    //   .catch((e) => {
+    //     console.log("**************** Error: ", e)
+    //   }) 
+    // }
   },
 }
 </script>
