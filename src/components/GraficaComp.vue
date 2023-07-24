@@ -23,12 +23,13 @@
 import Chart from 'chart.js/auto';
 
 export default {
+  props:['tipoDeJuego'],
   data() {
     return {
-      datosGrafico: null,
-      tipo_de_juego: "vis",
+      tipo_de_juego: this.tipoDeJuego,
       chart: null, // Agregamos una propiedad para guardar la instancia del gráfico
-      ensenar: true
+      ensenar: true,
+      datosGrafico: ""
     };
   },
   mounted() {
